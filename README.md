@@ -5,16 +5,16 @@ Point of Sales for Retail and Restaurants ( C#, pos for .net)
 ## How to configure and use EclipsePOS
 
 This article describes how to configure and use EclipsePOS point of sales system. Below you will find an overview of the topics.
-•	Introduction
-•	Prerequisites
-•	How to install
-•	Creating the Store database
-•	Exploring with demo data
-•	Completing the configuration
-•	Connecting POS peripherals
-•	Receipt print layout
-•	POS parameters that you may want to change
-•	Data synchronization in a multi store setups
+*   Introduction
+* 	Prerequisites
+* 	How to install
+* 	Creating the Store database
+* 	Exploring with demo data
+* 	Completing the configuration
+* 	Connecting POS peripherals
+* 	Receipt print layout
+* 	POS parameters that you may want to change
+* 	Data synchronization in a multi store setups
 
 
 
