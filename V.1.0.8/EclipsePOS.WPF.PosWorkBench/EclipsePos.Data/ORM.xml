@@ -1,0 +1,1065 @@
+<relationalmapping>
+
+<type fullname="EclipsePos.Data.RetailStore">
+	<commandmap storedproc="Load_Retail_Store_By_Retail_Store_no" multiple="false" type="Select">
+    <propertymap member="Retail_store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+		<propertymap member="RetailStoreName" dbtype="varchar" dbsize="60" parameter="@store_name" direction="Output"></propertymap>
+		<propertymap member="Address1" dbtype="varchar" dbsize="60" parameter="@address1" direction="Output"></propertymap>
+		<propertymap member="Address2" dbtype="varchar" dbsize="60" parameter="@address2" direction="Output"></propertymap>
+		<propertymap member="Address3" dbtype="varchar" dbsize="60" parameter="@address3" direction="Output"></propertymap>
+		<propertymap member="Address4" dbtype="varchar" dbsize="60" parameter="@address4" direction="Output"></propertymap>
+		<propertymap member="City" dbtype="varchar" dbsize="30" parameter="@city" direction="Output"></propertymap>
+		<propertymap member="State" dbtype="varchar" dbsize="30" parameter="@state" direction="Output"></propertymap>
+		<propertymap member="Zip" dbtype="varchar" dbsize="30" parameter="@zip" direction="Output"></propertymap>
+		<propertymap member="Country" dbtype="varchar" dbsize="30" parameter="@country" direction="Output"></propertymap>
+		<propertymap member="Phone" dbtype="varchar" dbsize="30" parameter="@phone" direction="Output"></propertymap>
+    <propertymap member="Fax" dbtype="varchar" dbsize="30" parameter="@fax" direction="Output"></propertymap>
+    <propertymap member="Contact" dbtype="varchar" dbsize="60" parameter="@contact" direction="Output"></propertymap>
+    <propertymap member="Email" dbtype="varchar" dbsize="50" parameter="@email" direction="Output"></propertymap>
+    <propertymap member="Customer_tax_id" dbtype="varchar" dbsize="50" parameter="@customer_tax_id" direction="Output"></propertymap>
+    <propertymap member="Last_trans_no" dbtype="int" dbsize="7" parameter="@last_trans_no" direction="Output"></propertymap>
+	</commandmap>
+	<commandmap storedproc="Save_Retail_Store_By_Retail_store_no" multiple="false" type="Save">
+		<propertymap member="Retail_store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Last_trans_no" dbtype="int" dbsize="7" parameter="@last_trans_no" direction="Input"></propertymap>
+	</commandmap>
+</type>
+
+<type fullname="EclipsePos.Data.Employee">
+	<commandmap storedproc="Load_Employee_by_Logon" multiple="false" type="SelectByLogon">
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Employee_no" dbtype="varchar" dbsize="20" parameter="@employee_no" direction="Output"></propertymap>
+   	<propertymap member="Logon_no" dbtype="varchar" dbsize="32" parameter="@logon_no" direction="Input"></propertymap>
+		<propertymap member="Logon_pass" dbtype="varchar" dbsize="32" parameter="@logon_pass" direction="Output"></propertymap>
+		<propertymap member="Role_id" dbtype="varchar" dbsize="7" parameter="@role_id" direction="Output"></propertymap>
+		<propertymap member="FName" dbtype="varchar" dbsize="40" parameter="@fname" direction="Output"></propertymap>
+		<propertymap member="LName" dbtype="varchar" dbsize="40" parameter="@lname" direction="Output"></propertymap>
+		<propertymap member="MI" dbtype="varchar" dbsize="10" parameter="@mi" direction="Output"></propertymap>
+		<propertymap member="SSN" dbtype="varchar" dbsize="10" parameter="@ssn" direction="Output"></propertymap>
+		<propertymap member="Sal_grade" dbtype="int" dbsize="8" parameter="@sal_grade" direction="Output"></propertymap>
+	</commandmap>
+  <commandmap storedproc="Load_Employee_by_Employee_No" multiple="false" type="SelectByEmployeeNo">
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Employee_no" dbtype="varchar" dbsize="20" parameter="@employee_no" direction="Input"></propertymap>
+    <propertymap member="Logon_no" dbtype="varchar" dbsize="32" parameter="@logon_no" direction="Output"></propertymap>
+    <propertymap member="Logon_pass" dbtype="varchar" dbsize="32" parameter="@logon_pass" direction="Output"></propertymap>
+    <propertymap member="Role_id" dbtype="varchar" dbsize="7" parameter="@role_id" direction="Output"></propertymap>
+    <propertymap member="FName" dbtype="varchar" dbsize="40" parameter="@fname" direction="Output"></propertymap>
+    <propertymap member="LName" dbtype="varchar" dbsize="40" parameter="@lname" direction="Output"></propertymap>
+    <propertymap member="MI" dbtype="varchar" dbsize="10" parameter="@mi" direction="Output"></propertymap>
+    <propertymap member="SSN" dbtype="varchar" dbsize="10" parameter="@ssn" direction="Output"></propertymap>
+    <propertymap member="Sal_grade" dbtype="int" dbsize="8" parameter="@sal_grade" direction="Output"></propertymap>
+  </commandmap>
+  <commandmap storedproc="Load_All_Employees" multiple="true" type="LoadAllEmployees">
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+  </commandmap>
+</type>
+
+<type fullname="EclipsePos.Data.EmployeeRoleEvent">
+   <commandmap storedproc="Load_Employee_Role_Event" multiple="true" type="Load">
+      <propertymap member="Role_id" dbtype="varchar" dbsize="7" parameter="@role_id" direction="Input"></propertymap>
+     <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+   </commandmap>
+</type>
+
+
+<type fullname="EclipsePos.Data.PosKey">
+	<commandmap storedproc="Load_PosKey_By_Panel_id" multiple="true" type="LoadPosKeyByPanelID">
+		<propertymap member="Config_no" dbtype="int" dbsize="7" parameter="@config_no" direction="Input"></propertymap>
+		<propertymap member="Panel_id" dbtype="int" dbsize="7" parameter="@panel_id" direction="Input"></propertymap>
+	</commandmap>
+</type>
+    
+<type fullname="EclipsePos.Data.Menu">
+	<commandmap storedproc="Add_Menu" multiple="false" type="AddRun">
+		<propertymap member="Menu_ID" dbtype="int" dbsize="4" parameter="@menu_id" direction="Input"></propertymap>
+		<propertymap member="Config_no" dbtype="int" dbsize="4" parameter="@config_no" direction="Input"></propertymap>
+		<propertymap member="XPos" dbtype="int" dbsize="4" parameter="@xpos" direction="Input"></propertymap>
+		<propertymap member="YPpos" dbtype="int" dbsize="4" parameter="@ypos" direction="Input"></propertymap>
+		<propertymap member="Height" dbtype="int" dbsize="4" parameter="@height" direction="Input"></propertymap>
+		<propertymap member="Width" dbtype="int" dbsize="4" parameter="@width" direction="Input"></propertymap>
+		<propertymap member="Pix_width" dbtype="int" dbsize="4" parameter="@pix_width" direction="Input"></propertymap>
+		<propertymap member="Pix_height" dbtype="int" dbsize="4" parameter="@pix_height" direction="Input"></propertymap>
+		<propertymap member="Name" dbtype="varchar" dbsize="100" parameter="@name" direction="Input"></propertymap>
+	</commandmap>
+	<commandmap storedproc="Load_Menus_By_Config_No" multiple="true"  type="LoadMenusByConfigNo">
+		<propertymap member="Config_no" dbtype="int" dbsize="4" parameter="@config_no" direction="Input"></propertymap>
+	</commandmap>
+</type>
+
+
+
+
+<type fullname="EclipsePos.Data.SubMenu">
+	<commandmap storedproc="Add_SubMenu" multiple="false" type="AddRun">
+		<propertymap member="Sub_Menu_ID" dbtype="int" dbsize="4" parameter="@sub_menu_id" direction="Input"></propertymap>
+		<propertymap member="Menu_ID" dbtype="int" dbsize="4" parameter="@menu_id" direction="Input"></propertymap>
+		<propertymap member="Sub_Menu_Name" dbtype="varchar" dbsize="100" parameter="@sub_menu_name" direction="Input"></propertymap>
+	</commandmap>
+	<commandmap storedproc="Load_SubMenu_By_MenuID" multiple="true"  type="LoadSubMenus">
+		<propertymap member="Menu_ID" dbtype="int" dbsize="4" parameter="@menu_id" direction="Input"></propertymap>
+	</commandmap>
+</type>
+
+
+
+<type fullname="EclipsePos.Data.Item">
+	<commandmap storedproc="Load_Item_By_SKU" multiple="false" type="LoadItemBySKU">
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Sku" dbtype="varchar" dbsize="24" parameter="@sku" direction="Input"></propertymap>
+    <propertymap member="Short_Desc" dbtype="varchar" dbsize="60" parameter="@short_desc" direction="Output"></propertymap>
+    <propertymap member="Amount" dbtype="float" dbsize="8" parameter="@amount" direction="Output"></propertymap>
+    <propertymap member="Dept" dbtype="varchar" dbsize="5" parameter="@dept" direction="Output"></propertymap>
+    <propertymap member="Item_group" dbtype="varchar" dbsize="5" parameter="@item_group" direction="Output"></propertymap>
+    <propertymap member="Tax_group_id" dbtype="varchar" dbsize="12" parameter="@tax_group_id" direction="Output"></propertymap>
+    <propertymap member="Pricing_Opt" dbtype="int" dbsize="4" parameter="@pricing_opt" direction="Output"></propertymap>
+    <propertymap member="Active_Date" dbtype="datetime" dbsize="4" parameter="@active_date" direction="Output"></propertymap>
+    <propertymap member="Deactive_Date" dbtype="datetime" dbsize="4" parameter="@deactive_date" direction="Output"></propertymap>
+    <propertymap member="Tax_Inclusive" dbtype="int" dbsize="4" parameter="@tax_inclusive" direction="Output"></propertymap>
+    <propertymap member="Tax_Exempt" dbtype="int" dbsize="4" parameter="@tax_exempt" direction="Output"></propertymap>
+    <propertymap member="Catogory" dbtype="varchar" dbsize="6" parameter="@catogory" direction="Output"></propertymap>
+    <propertymap member="Shipping_uom" dbtype="varchar" dbsize="10" parameter="@shipping_uom" direction="Output"></propertymap>
+    <propertymap member="Plu" dbtype="varchar" dbsize="24" parameter="@plu" direction="Output"></propertymap>
+    <propertymap member="Def_quantity" dbtype="double" dbsize="10" parameter="@def_quantity" direction="Output"></propertymap>
+  </commandmap>
+	<commandmap storedproc="Load_Item_By_Plu" multiple="false" type="LoadItemByPlu">
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+		<propertymap member="Sku" dbtype="varchar" dbsize="24" parameter="@sku" direction="Output"></propertymap>
+		<propertymap member="Short_Desc" dbtype="varchar" dbsize="60" parameter="@short_desc" direction="Output"></propertymap>
+		<propertymap member="Amount" dbtype="float" dbsize="8" parameter="@amount" direction="Output"></propertymap>
+		<propertymap member="Dept" dbtype="varchar" dbsize="5" parameter="@dept" direction="Output"></propertymap>
+		<propertymap member="Item_group" dbtype="varchar" dbsize="5" parameter="@item_group" direction="Output"></propertymap>
+		<propertymap member="Tax_group_id" dbtype="varchar" dbsize="12" parameter="@tax_group_id" direction="Output"></propertymap>
+		<propertymap member="Pricing_Opt" dbtype="int" dbsize="4" parameter="@pricing_opt" direction="Output"></propertymap>
+		<propertymap member="Active_Date" dbtype="datetime" dbsize="4" parameter="@active_date" direction="Output"></propertymap>
+		<propertymap member="Deactive_Date" dbtype="datetime" dbsize="4" parameter="@deactive_date" direction="Output"></propertymap>
+		<propertymap member="Tax_Inclusive" dbtype="int" dbsize="4" parameter="@tax_inclusive" direction="Output"></propertymap>
+		<propertymap member="Tax_Exempt" dbtype="int" dbsize="4" parameter="@tax_exempt" direction="Output"></propertymap>
+    <propertymap member="Catogory" dbtype="varchar" dbsize="6" parameter="@catogory" direction="Output"></propertymap>
+    <propertymap member="Shipping_uom" dbtype="varchar" dbsize="10" parameter="@shipping_uom" direction="Output"></propertymap>
+    <propertymap member="Plu" dbtype="varchar" dbsize="24" parameter="@plu" direction="Input"></propertymap>
+    <propertymap member="Def_quantity" dbtype="double" dbsize="10" parameter="@def_quantity" direction="Output"></propertymap>
+  </commandmap>
+	<commandmap storedproc="Load_Item_By_Desc" multiple="true" type="LoadItemByDesc">
+		<propertymap member="Short_Desc" dbtype="varchar" dbsize="60" parameter="@short_desc" direction="Input"></propertymap>
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+	</commandmap>
+	<commandmap storedproc="Load_All_Items" multiple="true" type="LoadAllItems">
+		<propertymap member="Sku" dbtype="varchar" dbsize="20" parameter="@sku" direction="Input"></propertymap>
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+	</commandmap>
+  <commandmap storedproc="Load_Item_By_Item_Group" multiple="true" type="LoadItemsByItemGroup">
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Item_group" dbtype="varchar" dbsize="5" parameter="@item_group" direction="Input"></propertymap>
+  </commandmap>
+</type>
+
+
+<type fullname="EclipsePos.Data.Dialog">
+	<commandmap storedproc="Add_Dialog" multiple="false" type="AddRun">
+		<propertymap member="DialogID" dbtype="int" dbsize="4" parameter="@dialog_id" direction="Input"></propertymap>
+ 		<propertymap member="DialogType" dbtype="int" dbsize="4" parameter="@dialog_type" direction="Input"></propertymap>
+		<propertymap member="DialogName" dbtype="varchar" dbsize="50" parameter="@dialog_name" direction="Input"></propertymap>
+	</commandmap>
+	<commandmap storedproc="Load_Dialog" multiple="true" type="LoadDialog">
+ 	</commandmap>
+	<commandmap storedproc="Load_Dialog_By_DialogName" multiple="false" type="LoadDialogByDialogName">
+		<propertymap member="DialogID" dbtype="int" dbsize="4" parameter="@dialog_id" direction="Output"></propertymap>
+ 		<propertymap member="DialogType" dbtype="int" dbsize="4" parameter="@dialog_type" direction="Output"></propertymap>
+		<propertymap member="DialogName" dbtype="varchar" dbsize="50" parameter="@dialog_name" direction="Input"></propertymap>
+	</commandmap>
+</type>
+
+
+<type fullname="EclipsePos.Data.DialogEvent">
+	<commandmap storedproc="Load_DialogEvent_By_DialogID" multiple="true" type="LoadDialogEventByDialogID">
+   	<propertymap member="DialogID" dbtype="int" dbsize="4" parameter="@dialog_id" direction="Input"></propertymap>
+	</commandmap>
+</type>
+
+<type fullname="EclipsePos.Data.MenuPanels">
+	<commandmap storedproc="Load_Menu_Panels_By_Config_no" multiple="true" type="LoadMenuPanels">
+		<propertymap member="Config_no" dbtype="int" dbsize="4" parameter="@config_no" direction="Input"></propertymap>
+	</commandmap>
+</type>
+
+<type fullname="EclipsePos.Data.MenuConfig">
+	<commandmap storedproc="Load_Menu_Config_By_Config_No" multiple="true" type="Load">
+		<propertymap member="Config_no" dbtype="int" dbsize="4" parameter="@config_no" direction="Input"></propertymap>
+	</commandmap>
+</type>
+
+
+<type fullname="EclipsePos.Data.PosParam">
+	<commandmap storedproc="Add_pos_param" multiple="false" type="AddRun">
+		<propertymap member="Config_no" dbtype="int" dbsize="4" parameter="@config_no" direction="Input"></propertymap>
+		<propertymap member="Param_type" dbtype="int" dbsize="4" parameter="@param_type" direction="Input"></propertymap>
+		<propertymap member="Param_catogory" dbtype="int" dbsize="4" parameter="@param_catogory" direction="Input"></propertymap>
+		<propertymap member="Help_id" dbtype="int" dbsize="4" parameter="@help_id" direction="Input"></propertymap>
+		<propertymap member="Param_name" dbtype="varchar" dbsize="100" parameter="@param_name" direction="Input"></propertymap>
+		<propertymap member="Param_value" dbtype="varchar" dbsize="100" parameter="@param_value" direction="Input"></propertymap>
+    <propertymap member="Remarks" dbtype="varchar" dbsize="100" parameter="@remarks" direction="Input"></propertymap>
+	</commandmap>
+	<commandmap storedproc="Load_pos_param" multiple="false" type="Select">
+		<propertymap member="Config_no" dbtype="int" dbsize="4" parameter="@config_no" direction="Input"></propertymap>
+		<propertymap member="Param_type" dbtype="int" dbsize="4" parameter="@param_type" direction="Output"></propertymap>
+		<propertymap member="Param_catogory" dbtype="int" dbsize="4" parameter="@param_catogory" direction="Output"></propertymap>
+		<propertymap member="Help_id" dbtype="int" dbsize="4" parameter="@help_id" direction="Output"></propertymap>
+		<propertymap member="Param_name" dbtype="varchar" dbsize="100" parameter="@param_name" direction="Input"></propertymap>
+		<propertymap member="Param_value" dbtype="varchar" dbsize="100" parameter="@param_value" direction="Output"></propertymap>
+    <propertymap member="Remarks" dbtype="varchar" dbsize="100" parameter="@remarks" direction="Input"></propertymap>
+  </commandmap>
+	<commandmap storedproc="Load_pos_param_by_config_no" multiple="true"  type="LoadPosParamByConfigNo">
+		<propertymap member="Config_no" dbtype="int" dbsize="4" parameter="@config_no" direction="Input"></propertymap>
+	</commandmap>
+</type>
+
+
+<type fullname="EclipsePos.Data.Transaction">
+	<commandmap storedproc="Add_Trans" multiple="false" type="AddRun">
+		<propertymap member="Trans_no" dbtype="int" dbsize="4" parameter="@trans_no" direction="Input"></propertymap>
+		<propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+		<propertymap member="Drawer_no" dbtype="int" dbsize="4" parameter="@drawer_no" direction="Input"></propertymap>
+		<propertymap member="Config_no" dbtype="int" dbsize="4" parameter="@config_no" direction="Input"></propertymap>
+		<propertymap member="Trans_type" dbtype="int" dbsize="4" parameter="@trans_type" direction="Input"></propertymap>
+		<propertymap member="State" dbtype="int" dbsize="4" parameter="@state" direction="Input"></propertymap>
+		<propertymap member="Reason_code" dbtype="int" dbsize="4" parameter="@reason_code" direction="Input"></propertymap>
+		<propertymap member="Customer_tax_id" dbtype="varchar" dbsize="50" parameter="@customer_tax_id" direction="Input"></propertymap>
+		<propertymap member="Start_time" dbtype="datetime" dbsize="8" parameter="@start_time" direction="Input"></propertymap>
+		<propertymap member="Complete_time" dbtype="datetime" dbsize="8" parameter="@complete_time" direction="Input"></propertymap>
+		<propertymap member="Employee_login_no" dbtype="int" dbsize="4" parameter="@employee_login_no" direction="Input"></propertymap>
+		<propertymap member="Carry_out" dbtype="int" dbsize="4" parameter="@carry_out" direction="Input"></propertymap>
+		<propertymap member="Training_mode" dbtype="int" dbsize="4" parameter="@training_mode" direction="Input"></propertymap>
+    <propertymap member="Table_name" dbtype="varchar" dbsize="3" parameter="@table_name" direction="Input"></propertymap>
+    <propertymap member="Archive_date" dbtype="datetime" dbsize="4" parameter="@archive_date" direction="Input"></propertymap>
+		<propertymap member="Upload_session_no" dbtype="varchar" dbsize="22" parameter="@upload_session_no" direction="Input"></propertymap>
+		<propertymap member="Replication_date" dbtype="datetime" dbsize="4" parameter="@replication_date" direction="Input"></propertymap>
+	</commandmap>
+	<commandmap storedproc="Update_Trans_State" multiple="false"  type="UpdateTransState">
+		<propertymap member="Trans_no" dbtype="int" dbsize="4" parameter="@trans_no" direction="Input"></propertymap>
+    <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+    <propertymap member="State" dbtype="int" dbsize="4" parameter="@state" direction="Input"></propertymap>
+	</commandmap>
+	<commandmap storedproc="Update_Trans_State_and_Type" multiple="false"  type="UpdateTransStateAndType">
+		<propertymap member="Trans_no" dbtype="int" dbsize="4" parameter="@trans_no" direction="Input"></propertymap>
+    <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+    <propertymap member="State" dbtype="int" dbsize="4" parameter="@state" direction="Input"></propertymap>
+		<propertymap member="Trans_type" dbtype="int" dbsize="4" parameter="@trans_type" direction="Input"></propertymap>
+	</commandmap>
+  <commandmap storedproc="Update_Trans_Customer" multiple="false"  type="UpdateCustomer">
+    <propertymap member="Trans_no" dbtype="int" dbsize="4" parameter="@trans_no" direction="Input"></propertymap>
+    <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+    <propertymap member="Customer_tax_id" dbtype="varchar" dbsize="50" parameter="@customer_tax_id" direction="Input"></propertymap>
+  </commandmap>
+	<commandmap storedproc="Load_Trans_By_Trans_no" multiple="false"  type="LoadTransByTrans">
+    <propertymap member="Trans_no" dbtype="int" dbsize="4" parameter="@trans_no" direction="Input"></propertymap>
+		<propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+		<propertymap member="Drawer_no" dbtype="int" dbsize="4" parameter="@drawer_no" direction="Output"></propertymap>
+		<propertymap member="Config_no" dbtype="int" dbsize="4" parameter="@config_no" direction="Output"></propertymap>
+		<propertymap member="Trans_type" dbtype="int" dbsize="4" parameter="@trans_type" direction="Output"></propertymap>
+		<propertymap member="State" dbtype="int" dbsize="4" parameter="@state" direction="Output"></propertymap>
+		<propertymap member="Reason_code" dbtype="int" dbsize="4" parameter="@reason_code" direction="Output"></propertymap>
+		<propertymap member="Customer_tax_id" dbtype="varchar" dbsize="50" parameter="@customer_tax_id" direction="Output"></propertymap>
+		<propertymap member="Start_time" dbtype="datetime" dbsize="8" parameter="@start_time" direction="Output"></propertymap>
+		<propertymap member="Complete_time" dbtype="datetime" dbsize="8" parameter="@complete_time" direction="Output"></propertymap>
+		<propertymap member="Employee_login_no" dbtype="varchar" dbsize="32" parameter="@employee_login_no" direction="Output"></propertymap>
+		<propertymap member="Carry_out" dbtype="int" dbsize="4" parameter="@carry_out" direction="Output"></propertymap>
+		<propertymap member="Training_mode" dbtype="int" dbsize="4" parameter="@training_mode" direction="Output"></propertymap>
+    <propertymap member="Table_name" dbtype="varchar" dbsize="3" parameter="@table_name" direction="Output"></propertymap>
+    <propertymap member="Archive_date" dbtype="datetime" dbsize="4" parameter="@archive_date" direction="Output"></propertymap>
+		<propertymap member="Upload_session_no" dbtype="varchar" dbsize="22" parameter="@upload_session_no" direction="Output"></propertymap>
+		<propertymap member="Replication_date" dbtype="datetime" dbsize="4" parameter="@replication_date" direction="Output"></propertymap>
+	</commandmap>
+  <commandmap storedproc="Load_Trans_By_State" multiple="true"  type="LoadByState">
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+    <propertymap member="State" dbtype="int" dbsize="4" parameter="@state" direction="Input"></propertymap>
+  </commandmap>
+  <commandmap storedproc="Load_Trans_By_Table_And_State" multiple="false"  type="LoadByTableAndState">
+    <propertymap member="Trans_no" dbtype="int" dbsize="4" parameter="@trans_no" direction="Output"></propertymap>
+    <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Output"></propertymap>
+    <propertymap member="Drawer_no" dbtype="int" dbsize="4" parameter="@drawer_no" direction="Output"></propertymap>
+    <propertymap member="Config_no" dbtype="int" dbsize="4" parameter="@config_no" direction="Output"></propertymap>
+    <propertymap member="Trans_type" dbtype="int" dbsize="4" parameter="@trans_type" direction="Output"></propertymap>
+    <propertymap member="State" dbtype="int" dbsize="4" parameter="@state" direction="Input"></propertymap>
+    <propertymap member="Reason_code" dbtype="int" dbsize="4" parameter="@reason_code" direction="Output"></propertymap>
+    <propertymap member="Customer_tax_id" dbtype="varchar" dbsize="50" parameter="@customer_tax_id" direction="Output"></propertymap>
+    <propertymap member="Start_time" dbtype="datetime" dbsize="8" parameter="@start_time" direction="Output"></propertymap>
+    <propertymap member="Complete_time" dbtype="datetime" dbsize="8" parameter="@complete_time" direction="Output"></propertymap>
+    <propertymap member="Employee_login_no" dbtype="varchar" dbsize="32" parameter="@employee_login_no" direction="Output"></propertymap>
+    <propertymap member="Carry_out" dbtype="int" dbsize="4" parameter="@carry_out" direction="Output"></propertymap>
+    <propertymap member="Training_mode" dbtype="int" dbsize="4" parameter="@training_mode" direction="Output"></propertymap>
+    <propertymap member="Table_name" dbtype="varchar" dbsize="3" parameter="@table_name" direction="Input"></propertymap>
+    <propertymap member="Archive_date" dbtype="datetime" dbsize="4" parameter="@archive_date" direction="Output"></propertymap>
+    <propertymap member="Upload_session_no" dbtype="varchar" dbsize="22" parameter="@upload_session_no" direction="Output"></propertymap>
+    <propertymap member="Replication_date" dbtype="datetime" dbsize="4" parameter="@replication_date" direction="Output"></propertymap>
+  </commandmap>
+  <commandmap storedproc="Load_Trans_By_Start_Date" multiple="true"  type="LoadByStartDate">
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+    <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+  </commandmap>
+
+
+
+</type>
+
+
+<type fullname="EclipsePos.Data.TransItem">
+	<commandmap storedproc="Add_Trans_item" multiple="false" type="AddRun">
+		<propertymap member="Trans_no" dbtype="int" dbsize="4" parameter="@Trans_no" direction="Input"></propertymap>
+		<propertymap member="Seq_no" dbtype="int" dbsize="4" parameter="@Seq_no" direction="Input"></propertymap>
+    <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+    <propertymap member="Line_no" dbtype="int" dbsize="4" parameter="@line_no" direction="Input"></propertymap>
+    <propertymap member="Sku" dbtype="varchar" dbsize="24" parameter="@Sku" direction="Input"></propertymap>
+		<propertymap member="Sku_link" dbtype="varchar" dbsize="20" parameter="@Sku_link" direction="Input"></propertymap>
+		<propertymap member="Quantity" dbtype="double" dbsize="8" parameter="@Quantity" direction="Input"></propertymap>
+		<propertymap member="Amount" dbtype="double" dbsize="8" parameter="@Amount" direction="Input"></propertymap>
+		<propertymap member="Ext_amount" dbtype="double" dbsize="8" parameter="@Ext_amount" direction="Input"></propertymap>
+		<propertymap member="Weight" dbtype="double" dbsize="8" parameter="@Weight" direction="Input"></propertymap>
+		<propertymap member="Item_desc" dbtype="varchar" dbsize="100" parameter="@Item_desc" direction="Input"></propertymap>
+		<propertymap member="State" dbtype="int" dbsize="4" parameter="@State" direction="Input"></propertymap>
+		<propertymap member="Reason_code" dbtype="int" dbsize="4" parameter="@Reason_code" direction="Input"></propertymap>
+		<propertymap member="Tax_exempt" dbtype="int" dbsize="4" parameter="@Tax_exempt" direction="Input"></propertymap>
+		<propertymap member="Tax_incl" dbtype="int" dbsize="4" parameter="@Tax_incl" direction="Input"></propertymap>
+		<propertymap member="Var_amount" dbtype="double" dbsize="8" parameter="@Var_amount" direction="Input"></propertymap>
+	</commandmap>
+	<commandmap storedproc="Load_TransItem_By_Trans_no" multiple="true"  type="LoadTransItemByTransno">
+		<propertymap member="Trans_no" dbtype="int" dbsize="4" parameter="@trans_no" direction="Input"></propertymap>
+    <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+  </commandmap>
+
+  <commandmap storedproc="Update_trans_item_state" multiple="true"  type="UpdateTransItemState">
+    <propertymap member="Trans_no" dbtype="int" dbsize="4" parameter="@trans_no" direction="Input"></propertymap>
+    <propertymap member="Seq_no" dbtype="int" dbsize="4" parameter="@Seq_no" direction="Input"></propertymap>
+    <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+    <propertymap member="State" dbtype="int" dbsize="4" parameter="@State" direction="Input"></propertymap>
+  </commandmap>
+
+  <commandmap storedproc="Update_trans_item_amounts" multiple="true"  type="UpdateTransItemAmounts">
+    <propertymap member="Trans_no" dbtype="int" dbsize="4" parameter="@trans_no" direction="Input"></propertymap>
+    <propertymap member="Seq_no" dbtype="int" dbsize="4" parameter="@Seq_no" direction="Input"></propertymap>
+    <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+    <propertymap member="Quantity" dbtype="double" dbsize="8" parameter="@Quantity" direction="Input"></propertymap>
+    <propertymap member="Amount" dbtype="double" dbsize="8" parameter="@Amount" direction="Input"></propertymap>
+    <propertymap member="Ext_amount" dbtype="double" dbsize="8" parameter="@Ext_amount" direction="Input"></propertymap>
+  </commandmap>
+
+</type>
+
+<type fullname="EclipsePos.Data.TransTender">
+	<commandmap storedproc="Add_Trans_tender" multiple="false" type="AddRun">
+		<propertymap member="Trans_no" dbtype="int" dbsize="4" parameter="@Trans_no" direction="Input"></propertymap>
+		<propertymap member="Seq_no" dbtype="int" dbsize="4" parameter="@Seq_no" direction="Input"></propertymap>
+    <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+    <propertymap member="Tendertype" dbtype="int" dbsize="4" parameter="@Tendertype" direction="Input"></propertymap>
+		<propertymap member="Amount" dbtype="double" dbsize="8" parameter="@Amount" direction="Input"></propertymap>
+		<propertymap member="Change_amount" dbtype="double" dbsize="8" parameter="@Change_amount" direction="Input"></propertymap>
+		<propertymap member="Tender_desc" dbtype="varchar" dbsize="100" parameter="@Tender_desc" direction="Input"></propertymap>
+		<propertymap member="Change_desc" dbtype="varchar" dbsize="100" parameter="@Change_desc" direction="Input"></propertymap>
+		<propertymap member="Locale_language" dbtype="varchar" dbsize="2" parameter="@Locale_language" direction="Input"></propertymap>
+		<propertymap member="Locale_country" dbtype="varchar" dbsize="2" parameter="@Locale_country" direction="Input"></propertymap>
+		<propertymap member="Data_capture" dbtype="varchar" dbsize="100" parameter="@Data_capture" direction="Input"></propertymap>
+		<propertymap member="State" dbtype="int" dbsize="4" parameter="@State" direction="Input"></propertymap>
+	</commandmap>
+	<commandmap storedproc="Load_Trans_Tender_By_Trans_no" multiple="true"  type="LoadTransTenderByTransno">
+		<propertymap member="Trans_no" dbtype="int" dbsize="4" parameter="@trans_no" direction="Input"></propertymap>
+    <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+  </commandmap>
+  <commandmap storedproc="Update_trans_tender_state" multiple="true"  type="UpdateTransTenderState">
+    <propertymap member="Trans_no" dbtype="int" dbsize="4" parameter="@trans_no" direction="Input"></propertymap>
+    <propertymap member="Seq_no" dbtype="int" dbsize="4" parameter="@Seq_no" direction="Input"></propertymap>
+    <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+    <propertymap member="State" dbtype="int" dbsize="4" parameter="@State" direction="Input"></propertymap>
+  </commandmap>
+
+</type>
+
+
+<type fullname="EclipsePos.Data.TransBank">
+	<commandmap storedproc="Add_TransBank" multiple="false" type="AddRun">
+		<propertymap member="Trans_no" dbtype="int" dbsize="4" parameter="@trans_no" direction="Input"></propertymap>
+		<propertymap member="Seq_no" dbtype="int" dbsize="4" parameter="@seq_no" direction="Input"></propertymap>
+    <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+    <propertymap member="Pay_type" dbtype="int" dbsize="4" parameter="@Pay_type" direction="Input"></propertymap>
+		<propertymap member="Deposit_no" dbtype="int" dbsize="4" parameter="@deposit_no" direction="Input"></propertymap>
+		<propertymap member="State" dbtype="int" dbsize="4" parameter="@state" direction="Input"></propertymap>
+		<propertymap member="Drawer_no" dbtype="int" dbsize="4" parameter="@drawer_no" direction="Input"></propertymap>
+		<propertymap member="Bank_desc" dbtype="varchar" dbsize="100" parameter="@bank_desc" direction="Input"></propertymap>
+		<propertymap member="Locale_language" dbtype="varchar" dbsize="2" parameter="@locale_language" direction="Input"></propertymap>
+		<propertymap member="Locale_country" dbtype="varchar" dbsize="2" parameter="@locale_country" direction="Input"></propertymap>
+		<propertymap member="Amount" dbtype="double" dbsize="8" parameter="@amount" direction="Input"></propertymap>
+	</commandmap>
+	<commandmap storedproc="Load_Trans_Bank_By_Trans_no" multiple="true"  type="LoadTransBankByTransno">
+		<propertymap member="Trans_no" dbtype="int" dbsize="4" parameter="@trans_no" direction="Input"></propertymap>
+    <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+  </commandmap>
+
+</type>
+
+
+
+<type fullname="EclipsePos.Data.TransPromotion">
+	<commandmap storedproc="Add_Trans_Promotion" multiple="false" type="AddRun">
+		<propertymap member="Trans_no" dbtype="int" dbsize="4" parameter="@trans_no" direction="Input"></propertymap>
+		<propertymap member="Seq_no" dbtype="int" dbsize="4" parameter="@seq_no" direction="Input"></propertymap>
+    <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+    <propertymap member="Line_no" dbtype="int" dbsize="4" parameter="@line_no" direction="Input"></propertymap>
+    <propertymap member="PromotionNo" dbtype="int" dbsize="4" parameter="@promotion_no" direction="Input"></propertymap>
+		<propertymap member="PromotionType" dbtype="int" dbsize="4" parameter="@promotion_type" direction="Input"></propertymap>
+		<propertymap member="PromotionAmount" dbtype="double" dbsize="8" parameter="@promotion_amount" direction="Input"></propertymap>
+		<propertymap member="PromotionQuantity" dbtype="int" dbsize="4" parameter="@promotion_quantity" direction="Input"></propertymap>
+		<propertymap member="ReasonCode" dbtype="varchar" dbsize="100" parameter="@reason_code" direction="Input"></propertymap>
+		<propertymap member="PromotionData" dbtype="varchar" dbsize="100" parameter="@promotion_data" direction="Input"></propertymap>
+		<propertymap member="PromotionDesc" dbtype="varchar" dbsize="100" parameter="@promotion_desc" direction="Input"></propertymap>
+		<propertymap member="State" dbtype="int" dbsize="4" parameter="@state" direction="Input"></propertymap>
+	</commandmap>
+	<commandmap storedproc="Load_Trans_Promotion_By_Trans_no" multiple="true"  type="LoadAllByTransno">
+		<propertymap member="Trans_no" dbtype="int" dbsize="4" parameter="@trans_no" direction="Input"></propertymap>
+    <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+  </commandmap>
+  <commandmap storedproc="Update_trans_promotion_state" multiple="false"  type="UpdateTransPromotionState">
+    <propertymap member="Trans_no" dbtype="int" dbsize="4" parameter="@trans_no" direction="Input"></propertymap>
+    <propertymap member="Seq_no" dbtype="int" dbsize="4" parameter="@seq_no" direction="Input"></propertymap>
+    <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+    <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="State" dbtype="int" dbsize="4" parameter="@state" direction="Input"></propertymap>
+  </commandmap>
+  <commandmap storedproc="Update_trans_promotion_amount" multiple="false"  type="UpdateTransPromotionAmount">
+    <propertymap member="Trans_no" dbtype="int" dbsize="4" parameter="@trans_no" direction="Input"></propertymap>
+    <propertymap member="Seq_no" dbtype="int" dbsize="4" parameter="@seq_no" direction="Input"></propertymap>
+    <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+    <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="PromotionAmount" dbtype="double" dbsize="8" parameter="@promotion_amount" direction="Input"></propertymap>
+  </commandmap>
+</type>
+
+
+
+<type fullname="EclipsePos.Data.Subscriber">
+	<commandmap storedproc="Add_Sub" multiple="false" type="AddRun">
+		<propertymap member="Subscriber_id" dbtype="int" dbsize="4" parameter="@Subscriber_id" direction="Output"></propertymap>
+		<propertymap member="Subscriber_name" dbtype="varchar" dbsize="32" parameter="@Subscriber_name" direction="Input"></propertymap>
+		<propertymap member="Subscriber_pass" dbtype="varchar" dbsize="32" parameter="@Subscriber_pass" direction="Input"></propertymap>
+	</commandmap>
+	<commandmap storedproc="Load_Sub_By_Subscriber_Name"  multiple="false" type="LoadBySubscriberName">
+		<propertymap member="Subscriber_id" dbtype="int" dbsize="4" parameter="@Subscriber_id" direction="Output"></propertymap>
+		<propertymap member="Subscriber_name" dbtype="varchar" dbsize="32" parameter="@Subscriber_name" direction="Input"></propertymap>
+		<propertymap member="Subscriber_pass" dbtype="varchar" dbsize="32" parameter="@Subscriber_pass" direction="Output"></propertymap>
+	</commandmap>
+	<commandmap storedproc="Load_Sub_By_OrganizationId"  multiple="true" type="LoadByOrganizationId">
+		<propertymap member="Organization_id" dbtype="int" dbsize="4" parameter="@organization_id" direction="Input"></propertymap>
+	</commandmap>
+		<commandmap storedproc="Load_All_Sub"  multiple="true" type="LoadAll">
+	</commandmap>
+
+</type>
+
+<type fullname="EclipsePos.Data.SubscriberMap">
+	<commandmap storedproc="Add_sub_map" multiple="false" type="AddRun">
+		<propertymap member="Subscriber_id" dbtype="int" dbsize="4" parameter="@subscriber_id" direction="Input"></propertymap>
+		<propertymap member="Organization_id" dbtype="int" dbsize="4" parameter="@organization_id" direction="Input"></propertymap>
+		<propertymap member="Subscriber_priv" dbtype="int" dbsize="4" parameter="@subscriber_priv" direction="Input"></propertymap>
+	</commandmap>
+	<commandmap storedproc="Load_Sub_Map_By_Subsriberid" multiple="true"  type="LoadSubMapBySubscriberId">
+		<propertymap member="Subscriber_id" dbtype="int" dbsize="4" parameter="@subscriber_id" direction="Input"></propertymap>
+	</commandmap>
+</type>
+
+<type fullname="EclipsePos.Data.BoMaps">
+	<commandmap storedproc="Add_BoMap" multiple="false" type="AddRun">
+		<propertymap member="Bo_id" dbtype="int" dbsize="4" parameter="@Bo_id" direction="Input"></propertymap>
+		<propertymap member="Obj_type" dbtype="int" dbsize="4" parameter="@Obj_type" direction="Input"></propertymap>
+		<propertymap member="Parent_bo_id" dbtype="int" dbsize="4" parameter="@Parent_bo_id" direction="Input"></propertymap>
+		<propertymap member="Pobj_type" dbtype="int" dbsize="4" parameter="@Pobj_type" direction="Input"></propertymap>
+	</commandmap>
+	<commandmap storedproc="Load_BoMap_By_Parent" multiple="true"  type="LoadParentByIdAndType">
+		<propertymap member="Parent_bo_id" dbtype="int" dbsize="4" parameter="@parent_bo_id" direction="Input"></propertymap>
+		<propertymap member="Pobj_type" dbtype="int" dbsize="4" parameter="@pobj_type" direction="Input"></propertymap>
+	</commandmap>
+</type>
+
+
+<type fullname="EclipsePos.Data.Tax">
+		<commandmap storedproc="Load_Tax_By_Tax_Group_Id" multiple="true"  type="LoadTaxByTaxGroupId">
+		<propertymap member="TaxGroupId" dbtype="varchar" dbsize="12" parameter="@Tax_Group_Id" direction="Input"></propertymap>
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+  </commandmap>
+</type>
+
+
+
+<type fullname="EclipsePos.Data.TaxGroup">
+	<commandmap storedproc="Load_Tax_Group_By_Organization_Id" multiple="true"  type="LoadTaxGroupByOrganizationId">
+		<propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+	</commandmap>
+</type>
+
+
+
+<type fullname="EclipsePos.Data.TransTax">
+	<commandmap storedproc="Add_TransTax" multiple="false" type="AddRun">
+		<propertymap member="Trans_no" dbtype="int" dbsize="4" parameter="@trans_no" direction="Input"></propertymap>
+    <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+    <propertymap member="SeqNo" dbtype="int" dbsize="4" parameter="@seq_no" direction="Input"></propertymap>
+    <propertymap member="Line_no" dbtype="int" dbsize="4" parameter="@line_no" direction="Input"></propertymap>
+    <propertymap member="TaxId" dbtype="int" dbsize="4" parameter="@tax_id" direction="Input"></propertymap>
+		<propertymap member="TaxDesc" dbtype="varchar" dbsize="30" parameter="@tax_desc" direction="Input"></propertymap>
+		<propertymap member="Rate" dbtype="double" dbsize="30" parameter="@rate" direction="Input"></propertymap>
+		<propertymap member="TaxableAmount" dbtype="double" dbsize="4" parameter="@taxable_amount" direction="Input"></propertymap>
+		<propertymap member="TaxAmount" dbtype="double" dbsize="4" parameter="@tax_amount " direction="Input"></propertymap>
+		<propertymap member="State" dbtype="int" dbsize="4" parameter="@state" direction="Input"></propertymap>
+	</commandmap>
+	<commandmap storedproc="Load_Trans_Tax_By_Trans_no" multiple="true"  type="LoadTransTaxByTransno">
+		<propertymap member="Trans_no" dbtype="int" dbsize="4" parameter="@trans_no" direction="Input"></propertymap>
+    <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+  </commandmap>
+  <commandmap storedproc="Update_TransTax" multiple="false" type="Save">
+    <propertymap member="Trans_no" dbtype="int" dbsize="4" parameter="@trans_no" direction="Input"></propertymap>
+    <propertymap member="SeqNo" dbtype="int" dbsize="4" parameter="@seq_no" direction="Input"></propertymap>
+    <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+    <propertymap member="TaxableAmount" dbtype="double" dbsize="4" parameter="@taxable_amount" direction="Input"></propertymap>
+    <propertymap member="TaxAmount" dbtype="double" dbsize="4" parameter="@tax_amount " direction="Input"></propertymap>
+    <propertymap member="State" dbtype="int" dbsize="4" parameter="@state" direction="Input"></propertymap>
+  </commandmap>
+
+  <commandmap storedproc="Update_trans_tax_state" multiple="false" type="UpdateTransTaxState">
+    <propertymap member="Trans_no" dbtype="int" dbsize="4" parameter="@trans_no" direction="Input"></propertymap>
+    <propertymap member="SeqNo" dbtype="int" dbsize="4" parameter="@seq_no" direction="Input"></propertymap>
+    <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+    <propertymap member="State" dbtype="int" dbsize="4" parameter="@state" direction="Input"></propertymap>
+  </commandmap>
+
+</type>
+
+
+
+<type fullname="EclipsePos.Data.PosConfig">
+	<commandmap storedproc="Load_PosConfig_by_Name" multiple="false"  type="LoadPosConfigByConfigName">
+		<propertymap member="ConfigNo" dbtype="int" dbsize="4" parameter="@config_no" direction="Output"></propertymap>
+		<propertymap member="Name" dbtype="varchar" dbsize="50" parameter="@name" direction="Input"></propertymap>
+	</commandmap>
+  <commandmap storedproc="Load_PosConfig_by_ConfigNo" multiple="false"  type="LoadPosConfigByConfigNo">
+    <propertymap member="ConfigNo" dbtype="int" dbsize="4" parameter="@config_no" direction="Input"></propertymap>
+    <propertymap member="Name" dbtype="varchar" dbsize="50" parameter="@name" direction="Output"></propertymap>
+  </commandmap>
+</type>
+
+
+<type fullname="EclipsePos.Data.Promotion">
+	<commandmap storedproc="Add_Promotion" multiple="false" type="AddRun">
+		<propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="PromotionType" dbtype="int" dbsize="4" parameter="@promotion_type" direction="Input"></propertymap>
+		<propertymap member="PromotionVal1" dbtype="int" dbsize="4" parameter="@promotion_val1" direction="Input"></propertymap>
+		<propertymap member="PromotionVal2" dbtype="int" dbsize="4" parameter="@promotion_val2" direction="Input"></propertymap>
+		<propertymap member="PromotionVal3" dbtype="int" dbsize="4" parameter="@promotion_val3" direction="Input"></propertymap>
+		<propertymap member="PromotionVal4" dbtype="int" dbsize="4" parameter="@promotion_val4" direction="Input"></propertymap>
+		<propertymap member="PromotionVal5" dbtype="int" dbsize="4" parameter="@promotion_val5" direction="Input"></propertymap>
+		<propertymap member="PromotionDval1" dbtype="double" dbsize="8" parameter="@promotion_dval1" direction="Input"></propertymap>
+		<propertymap member="PromotionDval2" dbtype="double" dbsize="8" parameter="@promotion_dval2" direction="Input"></propertymap>
+		<propertymap member="PromotionDval3" dbtype="double" dbsize="8" parameter="@promotion_dval3" direction="Input"></propertymap>
+		<propertymap member="PromotionDval4" dbtype="double" dbsize="8" parameter="@promotion_dval4" direction="Input"></propertymap>
+		<propertymap member="PromotionDval5" dbtype="double" dbsize="8" parameter="@promotion_dval5" direction="Input"></propertymap>
+		<propertymap member="PrintBeforeItem" dbtype="int" dbsize="4" parameter="@print_before_item" direction="Input"></propertymap>
+		<propertymap member="Valid_date_from" dbtype="datetime" dbsize="12" parameter="@valid_date_from" direction="Input"></propertymap>
+		<propertymap member="Valid_date_to" dbtype="datetime" dbsize="12" parameter="@valid_date_to" direction="Input"></propertymap>
+		<propertymap member="PromotionString" dbtype="varchar" dbsize="100" parameter="@promotion_string" direction="Input"></propertymap>
+		<propertymap member="PromotionClass" dbtype="varchar" dbsize="100" parameter="@promotion_class" direction="Input"></propertymap>
+	</commandmap>
+	<commandmap storedproc="Load_Promotion_By_Promotion_No" multiple="false"  type="LoadPromotionByPromotionNo">
+		<propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="PromotionNo" dbtype="int" dbsize="4" parameter="@promotion_no" direction="Input"></propertymap>
+    <propertymap member="PromotionType" dbtype="int" dbsize="4" parameter="@promotion_type" direction="Output"></propertymap>
+		<propertymap member="PromotionVal1" dbtype="int" dbsize="4" parameter="@promotion_val1" direction="Output"></propertymap>
+		<propertymap member="PromotionVal2" dbtype="int" dbsize="4" parameter="@promotion_val2" direction="Output"></propertymap>
+		<propertymap member="PromotionVal3" dbtype="int" dbsize="4" parameter="@promotion_val3" direction="Output"></propertymap>
+		<propertymap member="PromotionVal4" dbtype="int" dbsize="4" parameter="@promotion_val4" direction="Output"></propertymap>
+		<propertymap member="PromotionVal5" dbtype="int" dbsize="4" parameter="@promotion_val5" direction="Output"></propertymap>
+		<propertymap member="PromotionDval1" dbtype="double" dbsize="8" parameter="@promotion_dval1" direction="Output"></propertymap>
+		<propertymap member="PromotionDval2" dbtype="double" dbsize="8" parameter="@promotion_dval2" direction="Output"></propertymap>
+		<propertymap member="PromotionDval3" dbtype="double" dbsize="8" parameter="@promotion_dval3" direction="Output"></propertymap>
+		<propertymap member="PromotionDval4" dbtype="double" dbsize="8" parameter="@promotion_dval4" direction="Output"></propertymap>
+		<propertymap member="PromotionDval5" dbtype="double" dbsize="8" parameter="@promotion_dval5" direction="Output"></propertymap>
+		<propertymap member="PrintBeforeItem" dbtype="int" dbsize="4" parameter="@print_before_item" direction="Output"></propertymap>
+		<propertymap member="Valid_date_from" dbtype="datetime" dbsize="12" parameter="@valid_date_from" direction="Output"></propertymap>
+		<propertymap member="Valid_date_to" dbtype="datetime" dbsize="12" parameter="@valid_date_to" direction="Output"></propertymap>
+		<propertymap member="PromotionString" dbtype="varchar" dbsize="100" parameter="@promotion_string" direction="Output"></propertymap>
+		<propertymap member="PromotionClass" dbtype="varchar" dbsize="100" parameter="@promotion_class" direction="Output"></propertymap>
+	</commandmap>
+
+</type>
+
+<type fullname="EclipsePos.Data.PromotionMap">
+	<commandmap storedproc="Load_PromotionMap_By_Map" multiple="true" type="LoadPromotionMapByMap">
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Promotion_map" dbtype="varchar" dbsize="20" parameter="@promotion_map" direction="Input"></propertymap>
+	</commandmap>
+	
+</type>
+
+
+<type fullname="EclipsePos.Data.Total">
+	<commandmap storedproc="Add_Total" multiple="false" type="AddRun">
+		<propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+    <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_total_id" direction="Input"></propertymap>
+    <propertymap member="Sequence_no" dbtype="int" dbsize="4" parameter="@sequence_no" direction="Input"></propertymap>
+    <propertymap member="Total_name" dbtype="int" dbsize="4" parameter="@total_name" direction="Input"></propertymap>
+		<propertymap member="Total_type" dbtype="int" dbsize="4" parameter="@total_type" direction="Input"></propertymap>
+		<propertymap member="Total_count" dbtype="int" dbsize="4" parameter="@total_count" direction="Input"></propertymap>
+		<propertymap member="Total_amount" dbtype="double" dbsize="8" parameter="@total_amount" direction="Input"></propertymap>
+	</commandmap>
+	<commandmap storedproc="Update_Total" multiple="false" type="AddToTotal">
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+		<propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+    <propertymap member="Total_name" dbtype="int" dbsize="4" parameter="@total_name" direction="Input"></propertymap>
+    <propertymap member="Total_type" dbtype="int" dbsize="4" parameter="@total_type" direction="Input"></propertymap>
+		<propertymap member="Total_amount" dbtype="double" dbsize="8" parameter="@total_amount" direction="Input"></propertymap>
+	</commandmap>
+		<commandmap storedproc="Update_total_Amount_Count" multiple="false" type="AddToTotalAndCount">
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+		<propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+    <propertymap member="Total_name" dbtype="int" dbsize="4" parameter="@total_name" direction="Input"></propertymap>
+    <propertymap member="Total_type" dbtype="int" dbsize="4" parameter="@total_type" direction="Input"></propertymap>
+    <propertymap member="Total_amount" dbtype="double" dbsize="8" parameter="@total_amount" direction="Input"></propertymap>
+		<propertymap member="Total_count" dbtype="int" dbsize="4" parameter="@total_count" direction="Input"></propertymap>
+
+	</commandmap>
+	<commandmap storedproc="Load_Total_By_Total_id" multiple="true" type="LoadTotalByTotalId">
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+    <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+    <propertymap member="Sequence_no" dbtype="int" dbsize="4" parameter="@sequence_no" direction="Input"></propertymap>
+	</commandmap>
+	<commandmap storedproc="Delete_Total" multiple="false" type="DeleteRun">
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+    <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+    <propertymap member="Sequence_no" dbtype="int" dbsize="4" parameter="@sequence_no" direction="Input"></propertymap>
+	</commandmap>
+
+</type>
+
+<type fullname="EclipsePos.Data.PosTotal">
+	<commandmap storedproc="Load_Pos_Total" multiple="false" type="LoadPosTotal">
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+		<propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+    <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+    <propertymap member="Total_name" dbtype="int" dbsize="4" parameter="@total_name" direction="Input"></propertymap>
+    <propertymap member="Sequence_no" dbtype="int" dbsize="4" parameter="@sequence_no" direction="Output"></propertymap>
+    <propertymap member="Emp_id" dbtype="int" dbsize="4" parameter="@emp_id" direction="Output"></propertymap>
+    <propertymap member="Drawer_no" dbtype="int" dbsize="4" parameter="@drawer_no" direction="Output"></propertymap>
+    <propertymap member="Start_date" dbtype="datetime" dbsize="4" parameter="@start_date" direction="Output"></propertymap>
+    <propertymap member="End_date" dbtype="datetime" dbsize="4" parameter="@end_date" direction="Output"></propertymap>
+    <propertymap member="Start_receipt_no" dbtype="int" dbsize="4" parameter="@start_receipt_no" direction="Output"></propertymap>
+    <propertymap member="End_receipt_no" dbtype="int" dbsize="4" parameter="@end_receipt_no" direction="Output"></propertymap>
+  </commandmap>
+  <commandmap storedproc="Update_pos_total_end_date" multiple="false" type="UpdatePosTotalEndDate">
+    <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+    <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+    <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+    <propertymap member="Total_name" dbtype="int" dbsize="4" parameter="@total_name" direction="Input"></propertymap>
+  </commandmap>
+</type>
+
+
+<type fullname="EclipsePos.Data.PosEmployeeTotal">
+      <commandmap storedproc="Add_Total" multiple="false" type="AddRun">
+        <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+        <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+        <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_total_id" direction="Input"></propertymap>
+        <propertymap member="Employee_no" dbtype="varchar" dbsize="20" parameter="@employee_no" direction="Input"></propertymap>
+        <propertymap member="Drawer_no" dbtype="int" dbsize="4" parameter="@drawer_no" direction="Input"></propertymap>
+        <propertymap member="Sequence_no" dbtype="int" dbsize="4" parameter="@sequence_no" direction="Input"></propertymap>
+        <propertymap member="Total_name" dbtype="int" dbsize="4" parameter="@total_name" direction="Input"></propertymap>
+        <propertymap member="Total_type" dbtype="int" dbsize="4" parameter="@total_type" direction="Input"></propertymap>
+        <propertymap member="Total_count" dbtype="int" dbsize="4" parameter="@total_count" direction="Input"></propertymap>
+        <propertymap member="Total_amount" dbtype="double" dbsize="8" parameter="@total_amount" direction="Input"></propertymap>
+      </commandmap>
+      <commandmap storedproc="Update_Pos_Employee_Total_Amount_Count" multiple="false" type="AddToEmployeeTotalAndCount">
+        <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+        <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+        <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+        <propertymap member="Employee_no" dbtype="varchar" dbsize="20" parameter="@employee_no" direction="Input"></propertymap>
+        <propertymap member="Drawer_no" dbtype="int" dbsize="4" parameter="@drawer_no" direction="Input"></propertymap>
+        <propertymap member="Total_name" dbtype="int" dbsize="4" parameter="@total_name" direction="Input"></propertymap>
+        <propertymap member="Total_type" dbtype="int" dbsize="4" parameter="@total_type" direction="Input"></propertymap>
+        <propertymap member="Total_count" dbtype="int" dbsize="4" parameter="@total_count" direction="Input"></propertymap>
+        <propertymap member="Total_amount" dbtype="double" dbsize="8" parameter="@total_amount" direction="Input"></propertymap>
+      </commandmap>
+      <commandmap storedproc="Load_Pos_Employee_Total" multiple="true" type="LoadEmployeeTotal">
+        <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+        <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+        <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+        <propertymap member="Sequence_no" dbtype="int" dbsize="4" parameter="@sequence_no" direction="Input"></propertymap>
+      </commandmap>
+     
+  </type>
+
+
+  <type fullname="EclipsePos.Data.Currency">
+	<commandmap storedproc="Load_Currency_By_Currency_code_id" multiple="false" type="LoadCurrencyByCurrencyCodeId">
+    <propertymap member="Home_currency" dbtype="varchar" dbsize="4" parameter="@home_currency" direction="Input"></propertymap>
+    <propertymap member="Source_currency" dbtype="varchar" dbsize="4" parameter="@source_currency" direction="Input"></propertymap>
+		<propertymap member="Rate_date" dbtype="Datetime" dbsize="8" parameter="@rate_date" direction="Input"></propertymap>
+		<propertymap member="Conversion_rate" dbtype="double" dbsize="8" parameter="@conversion_rate" direction="Output"></propertymap>
+		<propertymap member="Spread" dbtype="double" dbsize="8" parameter="@spread" direction="Output"></propertymap>
+		<propertymap member="Date_match" dbtype="Datetime" dbsize="9" parameter="@date_match" direction="Output"></propertymap>
+		<propertymap member="Rate_operator" dbtype="int" dbsize="4" parameter="@rate_operator" direction="Output"></propertymap>
+  </commandmap>
+</type>
+
+<type fullname="EclipsePos.Data.CurrencyCode">
+      <commandmap storedproc="Load_CurrencyCode_By_Pos_Key" multiple="false" type="LoadCurrencyCodeByPosKey">
+        <propertymap member="Currency_code" dbtype="varchar" dbsize="3" parameter="@currency_code" direction="Output"></propertymap>
+        <propertymap member="Currency_name" dbtype="varchar" dbsize="60" parameter="@currency_name" direction="Output"></propertymap>
+        <propertymap member="Symbol" dbtype="varchar" dbsize="4" parameter="@symbol" direction="Output"></propertymap>
+        <propertymap member="Decimals" dbtype="int" dbsize="8" parameter="@decimals" direction="Output"></propertymap>
+        <propertymap member="Symbol_position" dbtype="int" dbsize="8" parameter="@symbol_position" direction="Output"></propertymap>
+        <propertymap member="Thousand_seperator" dbtype="varchar" dbsize="1" parameter="@thousand_seperator" direction="Output"></propertymap>
+        <propertymap member="Decimal_seperator" dbtype="varchar" dbsize="1" parameter="@decimal_seperator" direction="Output"></propertymap>
+        <propertymap member="Negative_display" dbtype="int" dbsize="4" parameter="@negative_display" direction="Output"></propertymap>
+        <propertymap member="Pos_key_number" dbtype="int" dbsize="4" parameter="@pos_key_number" direction="Input"></propertymap>
+      </commandmap>
+    <commandmap storedproc="Load_CurrencyCode_By_Currency_Code" multiple="false" type="LoadByCurrencyCode">
+      <propertymap member="Currency_code" dbtype="varchar" dbsize="3" parameter="@currency_code" direction="Input"></propertymap>
+      <propertymap member="Currency_name" dbtype="varchar" dbsize="60" parameter="@currency_name" direction="Output"></propertymap>
+      <propertymap member="Symbol" dbtype="varchar" dbsize="4" parameter="@symbol" direction="Output"></propertymap>
+      <propertymap member="Decimals" dbtype="int" dbsize="8" parameter="@decimals" direction="Output"></propertymap>
+      <propertymap member="Symbol_position" dbtype="int" dbsize="8" parameter="@symbol_position" direction="Output"></propertymap>
+      <propertymap member="Thousand_seperator" dbtype="varchar" dbsize="1" parameter="@thousand_seperator" direction="Output"></propertymap>
+      <propertymap member="Decimal_seperator" dbtype="varchar" dbsize="1" parameter="@decimal_seperator" direction="Output"></propertymap>
+      <propertymap member="Negative_display" dbtype="int" dbsize="4" parameter="@negative_display" direction="Output"></propertymap>
+      <propertymap member="Pos_key_number" dbtype="int" dbsize="4" parameter="@pos_key_number" direction="Output"></propertymap>
+    </commandmap>
+</type>
+
+
+    <type fullname="EclipsePos.Data.InputFilter">
+	<commandmap storedproc="Load_Input_Filter" multiple="false" type="AddRun">
+		<propertymap member="Filter_id" dbtype="int" dbsize="4" parameter="@filter_id" direction="Input"></propertymap>
+		<propertymap member="Filter_type" dbtype="int" dbsize="4" parameter="@filter_type" direction="Input"></propertymap>
+		<propertymap member="Filter_Sub_Type" dbtype="int" dbsize="4" parameter="@filter_sub_type" direction="Input"></propertymap>
+		<propertymap member="Filter_name" dbtype="varchar" dbsize="50" parameter="@filter_name" direction="Input"></propertymap>
+		<propertymap member="Display_name" dbtype="varchar" dbsize="50" parameter="@display_name" direction="Input"></propertymap>
+		<propertymap member="Regex" dbtype="varchart" dbsize="32" parameter="@regex" direction="Input"></propertymap>
+		<propertymap member="Check_digit_class" dbtype="varchar" dbsize="100" parameter="@check_digit_class" direction="Input"></propertymap>
+		<propertymap member="Filter_class" dbtype="varchar" dbsize="100" parameter="@filter_class" direction="Input"></propertymap>
+	</commandmap>
+	<commandmap storedproc="Load_Input_Filter_By_Filter_Type" multiple="true" type="LoadAllByFilterType">
+		<propertymap member="Filter_type" dbtype="int" dbsize="4" parameter="@filter_type" direction="Input"></propertymap>
+	</commandmap>
+	
+</type>
+
+
+<type fullname="EclipsePos.Data.InputFilterField">
+	<commandmap storedproc="Load_Input_Filter_Field" multiple="false" type="AddRun">
+		<propertymap member="Filter_id" dbtype="int" dbsize="4" parameter="@Filter_id" direction="Input"></propertymap>
+		<propertymap member="Sequence_no" dbtype="int" dbsize="4" parameter="@Sequence_no" direction="Input"></propertymap>
+		<propertymap member="Name" dbtype="varchar" dbsize="32" parameter="@Name" direction="Input"></propertymap>
+	</commandmap>
+	<commandmap storedproc="Load_Input_Filter_Field_By_Filter_Id" multiple="true" type="LoadAllByFilterId">
+		<propertymap member="Filter_id" dbtype="int" dbsize="4" parameter="@filter_id" direction="Input"></propertymap>
+	</commandmap>
+	
+</type>
+
+
+<type fullname="EclipsePos.Data.ItemGroup">
+	<commandmap storedproc="Load_ItemGroup_By_Organization_No" multiple="true" type="Load">
+		<propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+		<propertymap member="Group_id" dbtype="varchar" dbsize="5" parameter="@group_id" direction="Output"></propertymap>
+		<propertymap member="Group_name" dbtype="varchar" dbsize="30" parameter="@group_name" direction="Output"></propertymap>
+	</commandmap>
+</type>
+
+<type fullname="EclipsePos.Data.Department">
+	<commandmap storedproc="Add_Department" multiple="false" type="AddRun">
+		<propertymap member="Config_no" dbtype="int" dbsize="4" parameter="@config_no" direction="Input"></propertymap>
+		<propertymap member="Department_id" dbtype="varchar" dbsize="5" parameter="@department_id" direction="Input"></propertymap>
+		<propertymap member="Department_name" dbtype="varchar" dbsize="30" parameter="@department_name" direction="Input"></propertymap>
+	</commandmap>
+	<commandmap storedproc="Load_Department_By_Config_no" multiple="true" type="LoadAllByConfigNo">
+		<propertymap member="Config_no" dbtype="int" dbsize="4" parameter="@config_no" direction="Input"></propertymap>
+	</commandmap>
+	<commandmap storedproc="Update_Department_By_Department_id" multiple="false" type="SaveDepartmentByDepartmentId">
+		<propertymap member="Config_no" dbtype="int" dbsize="4" parameter="@config_no" direction="Input"></propertymap>
+		<propertymap member="Department_id" dbtype="varchar" dbsize="5" parameter="@department_id" direction="Input"></propertymap>
+		<propertymap member="Department_name" dbtype="varchar" dbsize="30" parameter="@department_name" direction="Input"></propertymap>
+	</commandmap>
+	<commandmap storedproc="Delete_Department_By_Department_id" multiple="false" type="DeleteDepartmentByDepartmentId">
+		<propertymap member="Config_no" dbtype="int" dbsize="4" parameter="@config_no" direction="Input"></propertymap>
+		<propertymap member="Department_id" dbtype="varchar" dbsize="5" parameter="@department_id" direction="Input"></propertymap>
+	</commandmap>
+</type>
+
+<type fullname="EclipsePos.Data.PosProfile">
+	<commandmap storedproc="Add_Pos_Profile" multiple="false" type="AddRun">
+		<propertymap member="Profile_id" dbtype="int" dbsize="4" parameter="@profile_id" direction="Output"></propertymap>
+		<propertymap member="Config_no" dbtype="int" dbsize="4" parameter="@config_no" direction="Input"></propertymap>
+		<propertymap member="Help_id" dbtype="int" dbsize="4" parameter="@help_id" direction="Input"></propertymap>
+		<propertymap member="Profile_name" dbtype="varchar" dbsize="100" parameter="@profile_name" direction="Input"></propertymap>
+	</commandmap>
+	<commandmap storedproc="Load_Pos_Profile_By_Config_no" multiple="true" type="LoadAllByConfigNo">
+		<propertymap member="Config_no" dbtype="int" dbsize="4" parameter="@config_no" direction="Input"></propertymap>
+	</commandmap>
+	<commandmap storedproc="Update_Pos_Profile_By_Profile_id" multiple="false" type="Save">
+		<propertymap member="Profile_id" dbtype="int" dbsize="4" parameter="@profile_id" direction="Input"></propertymap>
+		<propertymap member="Profile_name" dbtype="varchar" dbsize="100" parameter="@profile_name" direction="Output"></propertymap>
+	</commandmap>
+	<commandmap storedproc="Delete_Pos_Profile_By_Profile_id" multiple="false" type="Remove">
+		<propertymap member="Profile_id" dbtype="int" dbsize="4" parameter="@profile_id" direction="Input"></propertymap>
+	</commandmap>
+</type>
+<type fullname="EclipsePos.Data.PosProfileEvent">
+	<commandmap storedproc="Add_Pos_Profile_Event" multiple="false" type="AddRun">
+		<propertymap member="Profile_id" dbtype="int" dbsize="4" parameter="@profile_id" direction="Input"></propertymap>
+		<propertymap member="Help_id" dbtype="int" dbsize="4" parameter="@help_id" direction="Input"></propertymap>
+		<propertymap member="Pos_event" dbtype="varchar" dbsize="100" parameter="@pos_event" direction="Input"></propertymap>
+	</commandmap>
+	<commandmap storedproc="Load_Pos_Profile_Event_By_Profile_id" multiple="true" type="LoadAllProfileEventByProfileId">
+		<propertymap member="Profile_id" dbtype="int" dbsize="4" parameter="@profile_id" direction="Input"></propertymap>
+	</commandmap>
+	<commandmap storedproc="Delete_Pos_Profile_Event_By_Profile_id" multiple="false" type="Remove">
+		<propertymap member="Profile_id" dbtype="int" dbsize="4" parameter="@profile_id" direction="Input"></propertymap>
+	</commandmap>
+</type>
+    
+<type fullname="EclipsePos.Data.Organization">
+	<commandmap storedproc="Load_Organization_By_Organization_No" multiple="false" type="Load">
+		<propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+		<propertymap member="Organization_name" dbtype="varchar" dbsize="60" parameter="@organization_name" direction="Output"></propertymap>
+		<propertymap member="Address1" dbtype="varchar" dbsize="60" parameter="@address1" direction="Output"></propertymap>
+		<propertymap member="Address2" dbtype="varchar" dbsize="60" parameter="@address2" direction="Output"></propertymap>
+		<propertymap member="Address3" dbtype="varchar" dbsize="60" parameter="@address3" direction="Output"></propertymap>
+		<propertymap member="Address4" dbtype="varchar" dbsize="60" parameter="@address4" direction="Output"></propertymap>
+    <propertymap member="City" dbtype="varchar" dbsize="30" parameter="@city" direction="Output"></propertymap>
+    <propertymap member="State" dbtype="varchar" dbsize="30" parameter="@state" direction="Output"></propertymap>
+    <propertymap member="Postal_code" dbtype="varchar" dbsize="20" parameter="@postal_code" direction="Output"></propertymap>
+    <propertymap member="Country" dbtype="varchar" dbsize="30" parameter="@country" direction="Output"></propertymap>
+    <propertymap member="Phone" dbtype="varchar" dbsize="30" parameter="@phone" direction="Output"></propertymap>
+    <propertymap member="Fax" dbtype="varchar" dbsize="30" parameter="@fax" direction="Output"></propertymap>
+    <propertymap member="Contact" dbtype="varchar" dbsize="60" parameter="@contact" direction="Output"></propertymap>
+    <propertymap member="Home_currency" dbtype="varchar" dbsize="3" parameter="@home_currency" direction="Output"></propertymap>
+    <propertymap member="Tax_number" dbtype="varchar" dbsize="40" parameter="@tax_number" direction="Output"></propertymap>
+    <propertymap member="Pos_shipment_code_length" dbtype="int" dbsize="7" parameter="@pos_shipment_code_length" direction="Output"></propertymap>
+    <propertymap member="Pos_shipment_prefix" dbtype="varchar" dbsize="6" parameter="@pos_shipment_prefix" direction="Output"></propertymap>
+    <propertymap member="Pos_shipment_next_number" dbtype="double" dbsize="7" parameter="@pos_shipment_next_number" direction="Output"></propertymap>
+	</commandmap>
+</type>
+
+    <type fullname="EclipsePos.Data.TableGroup">
+      <commandmap storedproc="Load_Table_Group_By_Strore_No" multiple="true" type="Load">
+        <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+        <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+      </commandmap>
+    </type>
+    
+    <type fullname="EclipsePos.Data.TableDetails">
+      <commandmap storedproc="Load_Table_Details_By_Table_Group_No" multiple="true" type="Load">
+        <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+        <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+        <propertymap member="Table_group_no" dbtype="int" dbsize="4" parameter="@table_group_no" direction="Input"></propertymap>
+      </commandmap>
+    </type>
+
+    <type fullname="EclipsePos.Data.Customer">
+      <commandmap storedproc="Load_customer_by_tax_id" multiple="false" type="LoadCustomerByTaxId">
+        <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+        <propertymap member="Tax_id" dbtype="varchar" dbsize="50" parameter="@tax_id" direction="Input"></propertymap>
+        <propertymap member="Customer_search_key" dbtype="varchar" dbsize="20" parameter="@customer_search_key" direction="Output"></propertymap>
+        <propertymap member="Customer_first_name" dbtype="varchar" dbsize="50" parameter="@customer_first_name" direction="Output"></propertymap>
+        <propertymap member="Customer_last_name" dbtype="varchar" dbsize="50" parameter="@customer_last_name" direction="Output"></propertymap>
+        <propertymap member="Addr1" dbtype="varchar" dbsize="50" parameter="@addr1" direction="Output"></propertymap>
+        <propertymap member="Addr2" dbtype="varchar" dbsize="50" parameter="@addr2" direction="Output"></propertymap>
+        <propertymap member="Postel_code" dbtype="varchar" dbsize="50" parameter="@postel_code" direction="Output"></propertymap>
+        <propertymap member="City" dbtype="varchar" dbsize="50" parameter="@city" direction="Output"></propertymap>
+        <propertymap member="Region" dbtype="varchar" dbsize="50" parameter="@region" direction="Output"></propertymap>
+        <propertymap member="Country" dbtype="varchar" dbsize="50" parameter="@country" direction="Output"></propertymap>
+        <propertymap member="Phone" dbtype="varchar" dbsize="20" parameter="@phone" direction="Output"></propertymap>
+        <propertymap member="Alt_phone" dbtype="varchar" dbsize="20" parameter="@alt_phone" direction="Output"></propertymap>
+        <propertymap member="Fax" dbtype="varchar" dbsize="20" parameter="@fax" direction="Output"></propertymap>
+        <propertymap member="Email" dbtype="varchar" dbsize="50" parameter="@email" direction="Output"></propertymap>
+        <propertymap member="Card" dbtype="varchar" dbsize="50" parameter="@card" direction="Output"></propertymap>
+        <propertymap member="Notes" dbtype="varchar" dbsize="100" parameter="@notes" direction="Output"></propertymap>
+        <propertymap member="Max_debt" dbtype="float" dbsize="8" parameter="@max_debt" direction="Output"></propertymap>
+        <propertymap member="Current_debt" dbtype="float" dbsize="8" parameter="@current_debt" direction="Output"></propertymap>
+        <propertymap member="Creation_date" dbtype="datetime" dbsize="4" parameter="@creation_date" direction="Output"></propertymap>
+        <propertymap member="Status" dbtype="int" dbsize="4" parameter="@status" direction="Output"></propertymap>
+        <propertymap member="Customer_account_set" dbtype="varchar" dbsize="6" parameter="@customer_account_set" direction="Output"></propertymap>
+        <propertymap member="Price_list_code" dbtype="varchar" dbsize="6" parameter="@price_list_code" direction="Output"></propertymap>
+        <propertymap member="Terms_code" dbtype="varchar" dbsize="6" parameter="@terms_code" direction="Output"></propertymap>
+        <propertymap member="Rate_type" dbtype="varchar" dbsize="2" parameter="@rate_type" direction="Output"></propertymap>
+        <propertymap member="Tax_group_code" dbtype="varchar" dbsize="12" parameter="@tax_group_code" direction="Output"></propertymap>
+      </commandmap>
+      <commandmap storedproc="Load_customer_by_search_key" multiple="true"  type="LoadCustomerBySearchKey">
+        <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+        <propertymap member="Customer_search_key" dbtype="varchar" dbsize="50" parameter="@customer_search_key" direction="Input"></propertymap>
+      </commandmap>
+      <commandmap storedproc="Update_customer_current_debt" multiple="true"  type="UpdateCurrentDebt">
+        <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+        <propertymap member="Tax_id" dbtype="varchar" dbsize="50" parameter="@tax_id" direction="Input"></propertymap>
+        <propertymap member="Current_debt" dbtype="float" dbsize="8" parameter="@current_debt" direction="Input"></propertymap>
+      </commandmap>
+
+    </type>
+
+    <type fullname="EclipsePos.Data.TransText">
+      <commandmap storedproc="Add_trans_text" multiple="false" type="AddRun">
+        <propertymap member="Trans_no" dbtype="int" dbsize="4" parameter="@trans_no" direction="Input"></propertymap>
+        <propertymap member="Seq_no" dbtype="int" dbsize="4" parameter="@seq_no" direction="Input"></propertymap>
+        <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+        <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+        <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+        <propertymap member="Line_no" dbtype="int" dbsize="4" parameter="@line_no" direction="Input"></propertymap>
+        <propertymap member="Text_line_no" dbtype="int" dbsize="4" parameter="@text_line_no" direction="Input"></propertymap>
+        <propertymap member="Extended_text" dbtype="varchar" dbsize="60" parameter="@extended_text" direction="Input"></propertymap>
+      </commandmap>
+      <commandmap storedproc="Load_Trans_text_By_Trans_no" multiple="true"  type="LoadByTransNo">
+        <propertymap member="Trans_no" dbtype="int" dbsize="4" parameter="@trans_no" direction="Input"></propertymap>
+        <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+        <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+        <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+      </commandmap>
+    </type>
+
+    <type fullname="EclipsePos.Data.Surcharge">
+      <commandmap storedproc="Load_surcharge_by_surcharge_key" multiple="false" type="LoadSurchargeBySurchargeKey">
+        <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+        <propertymap member="Surcharge_code" dbtype="varchar" dbsize="6" parameter="@surcharge_code" direction="Output"></propertymap>
+        <propertymap member="Surcharge_desc" dbtype="varchar" dbsize="60" parameter="@surcharge_desc" direction="Output"></propertymap>
+        <propertymap member="Amount" dbtype="float" dbsize="8" parameter="@amount" direction="Output"></propertymap>
+        <propertymap member="Method" dbtype="int" dbsize="4" parameter="@method" direction="Output"></propertymap>
+        <propertymap member="Surcharge_account" dbtype="varchar" dbsize="45" parameter="@surcharge_account" direction="Output"></propertymap>
+        <propertymap member="Tax_group_id" dbtype="varchar" dbsize="12" parameter="@tax_group_id" direction="Output"></propertymap>
+        <propertymap member="Tax_inclusive" dbtype="int" dbsize="2" parameter="@tax_inclusive" direction="Output"></propertymap>
+        <propertymap member="Tax_exempt" dbtype="int" dbsize="2" parameter="@tax_exempt" direction="Output"></propertymap>
+        <propertymap member="Surcharge_key_id" dbtype="int" dbsize="8" parameter="@surcharge_key_id" direction="Input"></propertymap>
+      </commandmap>
+      <commandmap storedproc="Load_surcharge_by_surcharge_code" multiple="false" type="LoadSurchargeBySurchargeCode">
+        <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+        <propertymap member="Surcharge_code" dbtype="varchar" dbsize="6" parameter="@surcharge_code" direction="Input"></propertymap>
+        <propertymap member="Surcharge_desc" dbtype="varchar" dbsize="60" parameter="@surcharge_desc" direction="Output"></propertymap>
+        <propertymap member="Amount" dbtype="float" dbsize="8" parameter="@amount" direction="Output"></propertymap>
+        <propertymap member="Method" dbtype="int" dbsize="4" parameter="@method" direction="Output"></propertymap>
+        <propertymap member="Surcharge_account" dbtype="varchar" dbsize="45" parameter="@surcharge_account" direction="Output"></propertymap>
+        <propertymap member="Tax_group_id" dbtype="varchar" dbsize="12" parameter="@tax_group_id" direction="Output"></propertymap>
+        <propertymap member="Tax_inclusive" dbtype="int" dbsize="2" parameter="@tax_inclusive" direction="Output"></propertymap>
+        <propertymap member="Tax_exempt" dbtype="int" dbsize="2" parameter="@tax_exempt" direction="Output"></propertymap>
+        <propertymap member="Surcharge_key_id" dbtype="int" dbsize="8" parameter="@surcharge_key_id" direction="Output"></propertymap>
+      </commandmap>
+      
+     </type>
+
+    <type fullname="EclipsePos.Data.StockBalance">
+      <commandmap storedproc="Update_stock_balance" multiple="true" type="AddBalance">
+        <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+        <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+        <propertymap member="Sku" dbtype="varchar" dbsize="24" parameter="@sku" direction="Input"></propertymap>
+        <propertymap member="Quantity_on_hand" dbtype="double" dbsize="10" parameter="@quantity" direction="Input"></propertymap>
+      </commandmap>
+    </type>
+
+    <type fullname="EclipsePos.Data.TransStock">
+      <commandmap storedproc="Add_trans_stock" multiple="true" type="Add">
+        <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+        <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+        <propertymap member="Sku" dbtype="varchar" dbsize="24" parameter="@sku" direction="Input"></propertymap>
+        <propertymap member="Quantity" dbtype="double" dbsize="10" parameter="@quantity" direction="Input"></propertymap>
+        <propertymap member="Transaction_type" dbtype="int" dbsize="10" parameter="@transaction_type" direction="Input"></propertymap>
+        <propertymap member="Reference_number" dbtype="varchar" dbsize="20" parameter="@reference_number" direction="Input"></propertymap>
+        <propertymap member="Transaction_time" dbtype="DateTime" dbsize="10" parameter="@transaction_time" direction="Input"></propertymap>
+      </commandmap>
+    </type>
+
+
+    <type fullname="EclipsePos.Data.TransSalesPerson">
+      <commandmap storedproc="Add_trans_sales_person" multiple="false" type="AddRun">
+        <propertymap member="Trans_no" dbtype="int" dbsize="4" parameter="@trans_no" direction="Input"></propertymap>
+        <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+        <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+        <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+        <propertymap member="Employee_no" dbtype="varchar" dbsize="20" parameter="@employee_no" direction="Input"></propertymap>
+        <propertymap member="State" dbtype="int" dbsize="4" parameter="@state" direction="Input"></propertymap>
+      </commandmap>
+      <commandmap storedproc="Delete_trans_sales_person" multiple="false" type="Delete">
+        <propertymap member="Trans_no" dbtype="int" dbsize="4" parameter="@trans_no" direction="Input"></propertymap>
+        <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+        <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+        <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+        <propertymap member="Employee_no" dbtype="varchar" dbsize="20" parameter="@employee_no" direction="Input"></propertymap>
+      </commandmap>
+      <commandmap storedproc="Load_trans_sales_person" multiple="true"  type="LoadByTransNo">
+        <propertymap member="Trans_no" dbtype="int" dbsize="4" parameter="@trans_no" direction="Input"></propertymap>
+        <propertymap member="Store_no" dbtype="varchar" dbsize="6" parameter="@store_no" direction="Input"></propertymap>
+        <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+        <propertymap member="Pos_no" dbtype="int" dbsize="4" parameter="@pos_no" direction="Input"></propertymap>
+      </commandmap>
+    </type>
+
+    <type fullname="EclipsePos.Data.CardMedia">
+      <commandmap storedproc="Load_card_media_by_media_id" multiple="false" type="LoadMeidaByMediaID">
+        <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+        <propertymap member="Media_id" dbtype="int" dbsize="10" parameter="@media_id" direction="Input"></propertymap>
+        <propertymap member="Media_name" dbtype="varchar" dbsize="10" parameter="@media_name" direction="Input"></propertymap>
+        <propertymap member="Media_type" dbtype="int" dbsize="4" parameter="@media_type" direction="Output"></propertymap>
+        <propertymap member="Media_desc" dbtype="varchar" dbsize="50" parameter="@media_desc" direction="Output"></propertymap>
+        <propertymap member="Media_class" dbtype="varchar" dbsize="100" parameter="@media_class" direction="Output"></propertymap>
+        <propertymap member="Total_type" dbtype="int" dbsize="4" parameter="@total_type" direction="Output"></propertymap>
+      </commandmap>
+      <commandmap storedproc="Load_card_Media_by_Organization_No" multiple="true"  type="LoadMediaByOrganizationNo">
+        <propertymap member="Organization_no" dbtype="varchar" dbsize="6" parameter="@organization_no" direction="Input"></propertymap>
+      </commandmap>
+    </type>
+
+
+  </relationalmapping>

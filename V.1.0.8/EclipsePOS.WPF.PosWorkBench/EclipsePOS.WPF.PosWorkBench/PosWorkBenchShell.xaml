@@ -1,0 +1,146 @@
+﻿<Window x:Class="EclipsePOS.WPF.PosWorkBench.PosWorkBenchShell"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cal="http://www.codeplex.com/CompositeWPF"
+        Closing="Window_Closing"
+        Title="EclipsePOS" Name="PosWindow" Height="Auto" Width="Auto" WindowState="Maximized" WindowStartupLocation="CenterScreen" Background="{DynamicResource GridBrush}" 
+         FontSize="14" WindowStyle="None">
+        <!-- Topmost="True"  WindowStyle="None" -->
+    <Window.Resources>
+        <Storyboard x:Key="OnLoadedTransition">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="PosWindow" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:01" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <!-- SolidColorBrush x:Key="GridBrush" Color="#FF1D0F48"/ -->
+        <SolidColorBrush x:Key="GridBrush" Color="#FF262626"/>
+        <SolidColorBrush x:Key="BorderBrush" Color="#FFC1C3DC"/>
+        <SolidColorBrush x:Key="InvoiceBodyBrushRevised" Color="#FFE5F2B6"/>
+        <LinearGradientBrush x:Key="ContentAreaBrush" EndPoint="0.046,0.973" StartPoint="0.954,0.027">
+            <GradientStop Color="#FF010736" Offset="0"/>
+            <GradientStop Color="#FF165794" Offset="1"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="InvoiceBodyBrush" EndPoint="0.046,0.973" StartPoint="0.954,0.027">
+            <GradientStop Color="#FFC5D79E" Offset="0"/>
+            <GradientStop Color="#FFE6FABB" Offset="1"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="OutboxHeaderBrush" EndPoint="0.5,0.173" StartPoint="0.5,0.827">
+            <GradientStop Color="#FF2373BE" Offset="0"/>
+            <GradientStop Color="#FF6496C8" Offset="1"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="BottomPanelBrush" EndPoint="0.5,0.119" StartPoint="0.5,1.081">
+            <GradientStop Color="#FF0F152B" Offset="0"/>
+            <GradientStop Color="#FF5A6496" Offset="1"/>
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="HeaderTextBrush" Color="#FFDCDCE6"/>
+        <SolidColorBrush x:Key="GridBodyBrush" Color="#7F28C8FF"/>
+
+        <LinearGradientBrush x:Key="GridShadowBrush" EndPoint="0.5,1.057" StartPoint="0.5,-0.057">
+            <GradientStop Color="#33FFFFFF" Offset="0"/>
+            <GradientStop Color="#00000000" Offset="1"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="PageBackgroundBrush" EndPoint="0.989,0.068" StartPoint="0.718,0.4">
+            <GradientStop Color="#FF30265A" Offset="0"/>
+            <GradientStop Color="#FF80BEE7" Offset="1"/>
+            <GradientStop Color="#FF332B5F" Offset="0.038"/>
+            <GradientStop Color="#FF7DB8E2" Offset="0.966"/>
+        </LinearGradientBrush>
+        
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                <BeginStoryboard Storyboard="{StaticResource OnLoadedTransition}"/>
+            </EventTrigger>
+    </Window.Triggers>
+    <Grid Margin="5,5,5,10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="50*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="40"/>
+            <RowDefinition  Height="40"/>
+            <RowDefinition  Height="*"/>
+            <RowDefinition  Height="*"/>
+            <RowDefinition  Height="*"/>
+            <RowDefinition  Height="*"/>
+            <RowDefinition  Height="*"/>
+            <RowDefinition  Height="90"/>
+            <RowDefinition  Height="*"/>
+            <RowDefinition  Height="80"/>
+            <RowDefinition  Height="80"/>
+            <RowDefinition  Height="80"/>
+        </Grid.RowDefinitions>
+
+        <Border  Grid.Row="0"   Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="3" BorderThickness="1" CornerRadius="0,0,0,0" Width="Auto" Height="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="3,1,3,0" >
+            <StackPanel Width="Auto" Height="Auto" >
+                <ItemsControl  Margin="5,0,0,0" x:Name="InvoiceHeaderRegion" cal:RegionManager.RegionName="InvoiceHeaderRegion" ></ItemsControl>
+            </StackPanel>
+        </Border>
+
+        <!-- Border  Grid.Row="1" Grid.Column="0" Grid.RowSpan="9" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" CornerRadius="0,00,10,10" Width="Auto" Height="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="3,1,3,3"  -->
+        <StackPanel Width="Auto" Height="Auto" Grid.Row="1" Grid.Column="0" Grid.RowSpan="9" >
+            <ItemsControl  x:Name="LeftMenuRegion" cal:RegionManager.RegionName="LeftMenuRegion" ></ItemsControl>
+        </StackPanel>
+        <!-- /Border -->
+
+        <!-- Border  Grid.Row="1" Grid.Column="1" Grid.RowSpan="9" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" CornerRadius="0,00,10,10" Width="Auto" Height="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="3,1,3,3"  -->
+        <StackPanel Width="Auto" Height="Auto" Grid.Row="1" Grid.Column="1" Grid.RowSpan="9" >
+            <ItemsControl  x:Name="RightMenuRegion" cal:RegionManager.RegionName="RightMenuRegion" ></ItemsControl>
+        </StackPanel>
+        <!-- /Border -->
+
+        <!-- Border  Grid.Row="1" Grid.RowSpan="11" Grid.Column="0" Grid.ColumnSpan="2" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" CornerRadius="0,0,10,10" Width="Auto" Height="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="3,1,3,0" -->
+        <StackPanel Grid.Row="1" Grid.RowSpan="9" Grid.Column="0" Grid.ColumnSpan="2" Width="Auto" Height="Auto" >
+            <ItemsControl  Margin="0,0,0,0" x:Name="TableRegion" cal:RegionManager.RegionName="TableRegion"  ></ItemsControl>
+        </StackPanel>
+        <!-- /Border -->
+
+        <StackPanel Grid.Row="1" Grid.RowSpan="11" Grid.Column="0" Grid.ColumnSpan="2" Width="Auto" Height="Auto" >
+            <ItemsControl  Margin="0,0,0,0" x:Name="LogRegion" cal:RegionManager.RegionName="LogRegion"  ></ItemsControl>
+        </StackPanel>
+
+        <!-- Border  Grid.Row="1" Grid.RowSpan="6"  Grid.Column="2"  Background="{DynamicResource InvoiceBodyBrushRevised}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" CornerRadius="0,0,0,0" Width="Auto" Height="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="3,1,3,0" >
+            <StackPanel Width="Auto" Height="Auto"  VerticalAlignment="Stretch">
+                <ItemsControl  Margin="5,0,0,0" x:Name="InvoiceRegion" cal:RegionManager.RegionName="InvoiceRegion" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ></ItemsControl>
+            </StackPanel>
+        </Border -->
+
+        <ScrollViewer  Grid.Row="1" Grid.RowSpan="6"  Grid.Column="2"  Background="{DynamicResource InvoiceBodyBrushRevised}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Width="Auto" Height="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="3,1,3,0" HorizontalScrollBarVisibility="Disabled" >
+            <ItemsControl  Margin="5,0,0,0" x:Name="InvoiceRegion" cal:RegionManager.RegionName="InvoiceRegion" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ></ItemsControl>
+         </ScrollViewer>
+
+        <Border  Grid.Row="7"  Grid.RowSpan="1" Grid.Column="2"  BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" CornerRadius="0,0,0,0" Width="Auto" Height="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="2,2,2,2"  >
+            <StackPanel Width="Auto" Height="Auto" >
+                <ItemsControl  Margin="5,0,0,0" x:Name="InvoiceTotalRegion" cal:RegionManager.RegionName="InvoiceTotalRegion" VerticalAlignment="Bottom" ></ItemsControl>
+            </StackPanel>
+        </Border>
+
+
+        <!-- Border  Grid.Row="8" Grid.Column="2" Grid.RowSpan="1"  BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" CornerRadius="10,10,0,0" Width="Auto" Height="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="1,1,0.5,0" -->
+            <StackPanel Grid.Row="8" Grid.RowSpan="1" Grid.Column="2"   >
+                <ItemsControl x:Name="OperatorPromptRegion" cal:RegionManager.RegionName="OperatorPromptRegion"  Width="Auto" Height="Auto" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" ></ItemsControl>
+            </StackPanel>
+        <!-- /Border -->
+        
+        <!-- Border  Grid.Row="9" Grid.Column="2" Grid.RowSpan="3" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" CornerRadius="0,0,10,10" Width="Auto" Height="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="3,0,3,3" -->
+            <StackPanel Width="Auto" Height="Auto" Grid.Row="9" Grid.Column="2" Grid.RowSpan="3" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
+                <ItemsControl Margin="0,0,0,0" x:Name="KeyPadRegion" cal:RegionManager.RegionName="KeyPadRegion" ></ItemsControl>
+            </StackPanel>
+        <!-- /Border -->
+
+     
+        <!-- Border  Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" CornerRadius="10,10,10,10" Width="Auto" Height="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="1,1,1,1" -->
+            <StackPanel Width="Auto" Height="Auto"  Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2"  VerticalAlignment="Bottom">
+                <ItemsControl Margin="0,0,0,0" x:Name="NavigatorRegion" cal:RegionManager.RegionName="NavigatorRegion" ></ItemsControl>
+            </StackPanel>
+        <!-- /Border -->
+
+
+
+
+    </Grid>
+    
+</Window>

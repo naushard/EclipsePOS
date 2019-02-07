@@ -1,0 +1,86 @@
+use possite1
+
+
+go
+
+/****** Object:  Table [dbo].[ICITEM]    Script Date: 02/19/2011 14:23:11 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[ICITEM](
+	[ITEMNO] [char](24) NOT NULL,
+	[AUDTDATE] [decimal](9, 0) NOT NULL,
+	[AUDTTIME] [decimal](9, 0) NOT NULL,
+	[AUDTUSER] [char](8) NOT NULL,
+	[AUDTORG] [char](6) NOT NULL,
+	[ALTSET] [int] NOT NULL,
+	[DESC] [char](60) NOT NULL,
+	[DATELASTMN] [decimal](9, 0) NOT NULL,
+	[INACTIVE] [smallint] NOT NULL,
+	[ITEMBRKID] [char](6) NOT NULL,
+	[FMTITEMNO] [char](24) NOT NULL,
+	[CATEGORY] [char](6) NOT NULL,
+	[CNTLACCT] [char](6) NOT NULL,
+	[STOCKITEM] [smallint] NOT NULL,
+	[STOCKUNIT] [char](10) NOT NULL,
+	[DEFPRICLST] [char](6) NOT NULL,
+	[UNITWGT] [decimal](19, 4) NOT NULL,
+	[PICKINGSEQ] [char](10) NOT NULL,
+	[SERIALNO] [smallint] NOT NULL,
+	[COMMODIM] [char](16) NOT NULL,
+	[DATEINACTV] [decimal](9, 0) NOT NULL,
+	[SEGMENT1] [char](24) NOT NULL,
+	[SEGMENT2] [char](24) NOT NULL,
+	[SEGMENT3] [char](24) NOT NULL,
+	[SEGMENT4] [char](24) NOT NULL,
+	[SEGMENT5] [char](24) NOT NULL,
+	[SEGMENT6] [char](24) NOT NULL,
+	[SEGMENT7] [char](24) NOT NULL,
+	[SEGMENT8] [char](24) NOT NULL,
+	[SEGMENT9] [char](24) NOT NULL,
+	[SEGMENT10] [char](24) NOT NULL,
+	[COMMENT1] [char](80) NOT NULL,
+	[COMMENT2] [char](80) NOT NULL,
+	[COMMENT3] [char](80) NOT NULL,
+	[COMMENT4] [char](80) NOT NULL,
+	[ALLOWONWEB] [smallint] NOT NULL,
+	[KITTING] [smallint] NOT NULL,
+	[VALUES] [int] NOT NULL,
+	[DEFKITNO] [char](6) NOT NULL,
+	[SELLABLE] [smallint] NOT NULL,
+	[WEIGHTUNIT] [char](10) NOT NULL,
+	[SERIALMASK] [char](6) NOT NULL,
+	[NEXTSERFMT] [char](40) NOT NULL,
+	[SUSEEXPDAY] [smallint] NOT NULL,
+	[SEXPDAYS] [smallint] NOT NULL,
+	[SDIFQTYOK] [smallint] NOT NULL,
+	[SVALUES] [int] NOT NULL,
+	[SWARYCODE] [char](6) NOT NULL,
+	[SCONTCODE] [char](6) NOT NULL,
+	[SCONTRECE] [smallint] NOT NULL,
+	[SWARYSOLD] [smallint] NOT NULL,
+	[SWARYREG] [smallint] NOT NULL,
+	[LOTITEM] [smallint] NOT NULL,
+	[LOTMASK] [char](6) NOT NULL,
+	[NEXTLOTFMT] [char](40) NOT NULL,
+	[LUSEEXPDAY] [smallint] NOT NULL,
+	[LEXPDAYS] [smallint] NOT NULL,
+	[LUSEQRNDAY] [smallint] NOT NULL,
+	[LQRNDAYS] [smallint] NOT NULL,
+	[LDIFQTYOK] [smallint] NOT NULL,
+	[LVALUES] [int] NOT NULL,
+	[LWARYCODE] [char](6) NOT NULL,
+	[LCONTCODE] [char](6) NOT NULL,
+	[LCONTRECE] [smallint] NOT NULL,
+	[LWARYSOLD] [smallint] NOT NULL,
+ CONSTRAINT [ICITEM_KEY_0] PRIMARY KEY CLUSTERED 
+(
+	[ITEMNO] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF

@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="EclipsePos.Apps.Views.InvoiceHeader.InvoiceHeaderView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+     Height="Auto"  Width="Auto" Name="rootControl" >
+    <UserControl.Resources>
+        <!-- Storyboard x:Key="OnLoadedTransition">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rootControl" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:01" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard -->
+        <LinearGradientBrush x:Key="OutboxHeaderBrush" EndPoint="0.5,0.173" StartPoint="0.5,0.827">
+            <GradientStop Color="#FF2373BE" Offset="0"/>
+            <GradientStop Color="#FF6496C8" Offset="1"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="BottomPanelBrush" EndPoint="0.5,0.119" StartPoint="0.5,1.081">
+            <GradientStop Color="#FF0F152B" Offset="0"/>
+            <GradientStop Color="#FF5A6496" Offset="1"/>
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="HeaderTextBrush" Color="#FFDCDCE6"/>
+        <SolidColorBrush x:Key="GridBodyBrush" Color="#7F28C8FF"/>
+
+        <LinearGradientBrush x:Key="GridShadowBrush" EndPoint="0.5,1.057" StartPoint="0.5,-0.057">
+            <GradientStop Color="#33FFFFFF" Offset="0"/>
+            <GradientStop Color="#00000000" Offset="1"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="PageBackgroundBrush" EndPoint="0.989,0.068" StartPoint="0.718,0.4">
+            <GradientStop Color="#FF30265A" Offset="0"/>
+            <GradientStop Color="#FF80BEE7" Offset="1"/>
+            <GradientStop Color="#FF332B5F" Offset="0.038"/>
+            <GradientStop Color="#FF7DB8E2" Offset="0.966"/>
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="BorderBrush" Color="#FFC1C3DC"/>
+        <!-- XLS Button Style -->
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250*"></ColumnDefinition>
+            <ColumnDefinition Width="75"></ColumnDefinition>
+            <ColumnDefinition Width="75*"></ColumnDefinition>
+            <ColumnDefinition Width="175"></ColumnDefinition>
+            <ColumnDefinition Width="75*"></ColumnDefinition>
+            <ColumnDefinition Width="75"></ColumnDefinition>
+            <ColumnDefinition Width="75*"></ColumnDefinition>
+            <ColumnDefinition Width="75*"></ColumnDefinition>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition ></RowDefinition>
+            
+        </Grid.RowDefinitions>
+        
+        <TextBlock  Grid.Row="0" Grid.Column="0" Name="txtBlockPosDate" TextAlignment="Center" Margin="0,0,0,0" Foreground="#FFFFFFFF" FontSize="16" ></TextBlock>
+        <TextBlock  Grid.Row="0" Grid.Column="1" Name="txtBlockTrxType" TextAlignment="Center" Margin="0,0,0,0"  Foreground="Orange" FontSize="16" FontWeight="Bold"></TextBlock>
+
+        <TextBlock  Grid.Row="0" Grid.Column="2" Name="txtBlockOperatorPrompt" Text="Operator"  TextAlignment="Center" Margin="0,0,0,0" Foreground="#FFFFFFFF" FontSize="16"  ></TextBlock>
+        <TextBlock  Grid.Row="0" Grid.Column="3" Name="txtBlockPosOperator"  TextAlignment="Left" Margin="0,0,0,0" Foreground="Orange"  FontSize="16" FontWeight="Bold"></TextBlock>
+
+        <TextBlock  Grid.Row="0" Grid.Column="4"  Name="txtBlockTerminalPrompt" Text="Terminal" TextAlignment="Center" Margin="0,0,0,0" Foreground="#FFFFFFFF" FontSize="16"></TextBlock>
+        <TextBlock  Grid.Row="0" Grid.Column="5"  Name="txtBlockPosNo"  TextAlignment="Left" Margin="0,0,0,0" Foreground="Orange" FontSize="16" FontWeight="Bold"></TextBlock>
+
+        <TextBlock  Grid.Row="0" Grid.Column="6"  Name="txtBlockTransactionPrompt" Text="Transaction" TextAlignment="Center" Margin="0,0,0,0" Foreground="#FFFFFFFF" FontSize="16"></TextBlock>
+        <TextBlock  Grid.Row="0" Grid.Column="7"  Name="txtBlockTrxNo"  TextAlignment="Left" Margin="0,0,0,0" Foreground="Orange" FontWeight="Bold" FontSize="16"></TextBlock>
+        
+        <TextBlock  Grid.Row="0" Grid.Column="8"  Name="txtBlockCustomerData"  TextAlignment="Left" Margin="0,0,0,0" Foreground="#FFFFFFFF" FontSize="16"></TextBlock>
+
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,182 @@
+USE [possite1]
+GO
+/****** Object:  Table [dbo].[ICITEM]    Script Date: 03/09/2011 10:17:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[ICITEM](
+	[ITEMNO] [char](24) NOT NULL,
+	[AUDTDATE] [decimal](9, 0) NOT NULL,
+	[AUDTTIME] [decimal](9, 0) NOT NULL,
+	[AUDTUSER] [char](8) NOT NULL,
+	[AUDTORG] [char](6) NOT NULL,
+	[ALTSET] [int] NOT NULL,
+	[DESC] [char](60) NOT NULL,
+	[DATELASTMN] [decimal](9, 0) NOT NULL,
+	[INACTIVE] [smallint] NOT NULL,
+	[ITEMBRKID] [char](6) NOT NULL,
+	[FMTITEMNO] [char](24) NOT NULL,
+	[CATEGORY] [char](6) NOT NULL,
+	[CNTLACCT] [char](6) NOT NULL,
+	[STOCKITEM] [smallint] NOT NULL,
+	[STOCKUNIT] [char](10) NOT NULL,
+	[DEFPRICLST] [char](6) NOT NULL,
+	[UNITWGT] [decimal](19, 4) NOT NULL,
+	[PICKINGSEQ] [char](10) NOT NULL,
+	[SERIALNO] [smallint] NOT NULL,
+	[COMMODIM] [char](16) NOT NULL,
+	[DATEINACTV] [decimal](9, 0) NOT NULL,
+	[SEGMENT1] [char](24) NOT NULL,
+	[SEGMENT2] [char](24) NOT NULL,
+	[SEGMENT3] [char](24) NOT NULL,
+	[SEGMENT4] [char](24) NOT NULL,
+	[SEGMENT5] [char](24) NOT NULL,
+	[SEGMENT6] [char](24) NOT NULL,
+	[SEGMENT7] [char](24) NOT NULL,
+	[SEGMENT8] [char](24) NOT NULL,
+	[SEGMENT9] [char](24) NOT NULL,
+	[SEGMENT10] [char](24) NOT NULL,
+	[COMMENT1] [char](80) NOT NULL,
+	[COMMENT2] [char](80) NOT NULL,
+	[COMMENT3] [char](80) NOT NULL,
+	[COMMENT4] [char](80) NOT NULL,
+	[ALLOWONWEB] [smallint] NOT NULL,
+	[KITTING] [smallint] NOT NULL,
+	[VALUES] [int] NOT NULL,
+	[DEFKITNO] [char](6) NOT NULL,
+	[SELLABLE] [smallint] NOT NULL,
+	[WEIGHTUNIT] [char](10) NOT NULL,
+	[SERIALMASK] [char](6) NOT NULL,
+	[NEXTSERFMT] [char](40) NOT NULL,
+	[SUSEEXPDAY] [smallint] NOT NULL,
+	[SEXPDAYS] [smallint] NOT NULL,
+	[SDIFQTYOK] [smallint] NOT NULL,
+	[SVALUES] [int] NOT NULL,
+	[SWARYCODE] [char](6) NOT NULL,
+	[SCONTCODE] [char](6) NOT NULL,
+	[SCONTRECE] [smallint] NOT NULL,
+	[SWARYSOLD] [smallint] NOT NULL,
+	[SWARYREG] [smallint] NOT NULL,
+	[LOTITEM] [smallint] NOT NULL,
+	[LOTMASK] [char](6) NOT NULL,
+	[NEXTLOTFMT] [char](40) NOT NULL,
+	[LUSEEXPDAY] [smallint] NOT NULL,
+	[LEXPDAYS] [smallint] NOT NULL,
+	[LUSEQRNDAY] [smallint] NOT NULL,
+	[LQRNDAYS] [smallint] NOT NULL,
+	[LDIFQTYOK] [smallint] NOT NULL,
+	[LVALUES] [int] NOT NULL,
+	[LWARYCODE] [char](6) NOT NULL,
+	[LCONTCODE] [char](6) NOT NULL,
+	[LCONTRECE] [smallint] NOT NULL,
+	[LWARYSOLD] [smallint] NOT NULL,
+ CONSTRAINT [ICITEM_KEY_0] PRIMARY KEY CLUSTERED 
+(
+	[ITEMNO] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+
+
+
+USE [possite1]
+GO
+/****** Object:  Table [dbo].[ICPRIC]    Script Date: 03/09/2011 10:19:03 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[ICPRIC](
+	[CURRENCY] [char](3) NOT NULL,
+	[ITEMNO] [char](24) NOT NULL,
+	[PRICELIST] [char](6) NOT NULL,
+	[AUDTDATE] [decimal](9, 0) NOT NULL,
+	[AUDTTIME] [decimal](9, 0) NOT NULL,
+	[AUDTUSER] [char](8) NOT NULL,
+	[AUDTORG] [char](6) NOT NULL,
+	[DESC] [char](60) NOT NULL,
+	[PRICEDECS] [smallint] NOT NULL,
+	[MARKUPCOST] [decimal](19, 6) NOT NULL,
+	[MARKUPUNIT] [char](10) NOT NULL,
+	[MARKUPCONV] [decimal](19, 6) NOT NULL,
+	[PRICETYPE] [smallint] NOT NULL,
+	[PRICEFMT] [smallint] NOT NULL,
+	[PRCNTLVL1] [decimal](9, 5) NOT NULL,
+	[PRCNTLVL2] [decimal](9, 5) NOT NULL,
+	[PRCNTLVL3] [decimal](9, 5) NOT NULL,
+	[PRCNTLVL4] [decimal](9, 5) NOT NULL,
+	[PRCNTLVL5] [decimal](9, 5) NOT NULL,
+	[PRICEBASE] [smallint] NOT NULL,
+	[PRICEQTY1] [decimal](19, 4) NOT NULL,
+	[PRICEQTY2] [decimal](19, 4) NOT NULL,
+	[PRICEQTY3] [decimal](19, 4) NOT NULL,
+	[PRICEQTY4] [decimal](19, 4) NOT NULL,
+	[PRICEQTY5] [decimal](19, 4) NOT NULL,
+	[MARKUP] [decimal](9, 5) NOT NULL,
+	[LASTMKPDT] [decimal](9, 0) NOT NULL,
+	[PREVMKPCST] [decimal](19, 6) NOT NULL,
+	[LASTEXCHDT] [decimal](9, 0) NOT NULL,
+	[PREVEXCHRT] [decimal](15, 7) NOT NULL,
+	[ROUNDMETHD] [smallint] NOT NULL,
+	[ROUNDAMT] [decimal](19, 6) NOT NULL,
+	[AMOUNTLVL1] [decimal](19, 6) NOT NULL,
+	[AMOUNTLVL2] [decimal](19, 6) NOT NULL,
+	[AMOUNTLVL3] [decimal](19, 6) NOT NULL,
+	[AMOUNTLVL4] [decimal](19, 6) NOT NULL,
+	[AMOUNTLVL5] [decimal](19, 6) NOT NULL,
+	[PRICEBY] [smallint] NOT NULL,
+	[MRKUPWUNIT] [char](10) NOT NULL,
+	[PRICEWGHT1] [decimal](19, 4) NOT NULL,
+	[PRICEWGHT2] [decimal](19, 4) NOT NULL,
+	[PRICEWGHT3] [decimal](19, 4) NOT NULL,
+	[PRICEWGHT4] [decimal](19, 4) NOT NULL,
+	[PRICEWGHT5] [decimal](19, 4) NOT NULL,
+	[CPRICETYPE] [smallint] NOT NULL,
+	[CCHECK] [smallint] NOT NULL,
+	[CCHECKBASE] [smallint] NOT NULL,
+	[CBASE] [smallint] NOT NULL,
+	[DEFBUNIT] [char](10) NOT NULL,
+	[DEFBWUNIT] [char](10) NOT NULL,
+	[DEFSUNIT] [char](10) NOT NULL,
+	[DEFSWUNIT] [char](10) NOT NULL,
+	[BPRICETYPE] [smallint] NOT NULL,
+	[BDEFUSING] [smallint] NOT NULL,
+	[BLOCATION] [char](6) NOT NULL,
+	[BBASE] [smallint] NOT NULL,
+	[BPERCENT] [decimal](9, 5) NOT NULL,
+	[BAMOUNT] [decimal](19, 6) NOT NULL,
+	[BRATETYPE] [char](2) NOT NULL,
+	[BRATEDATE] [decimal](9, 0) NOT NULL,
+	[BEXCHRATE] [decimal](15, 7) NOT NULL,
+	[BRATEOP] [smallint] NOT NULL,
+	[BRATEOVRRD] [smallint] NOT NULL,
+	[SPRICETYPE] [smallint] NOT NULL,
+	[SDEFUSING] [smallint] NOT NULL,
+	[SLOCATION] [char](6) NOT NULL,
+	[SBASE] [smallint] NOT NULL,
+	[SPERCENT] [decimal](9, 5) NOT NULL,
+	[SAMOUNT] [decimal](19, 6) NOT NULL,
+	[SRATETYPE] [char](2) NOT NULL,
+	[SRATEDATE] [decimal](9, 0) NOT NULL,
+	[SEXCHRATE] [decimal](15, 7) NOT NULL,
+	[SRATEOP] [smallint] NOT NULL,
+	[SRATEOVRRD] [smallint] NOT NULL,
+	[PRICESTART] [decimal](9, 0) NOT NULL,
+	[PRICEEND] [decimal](9, 0) NOT NULL,
+ CONSTRAINT [ICPRIC_KEY_0] PRIMARY KEY CLUSTERED 
+(
+	[CURRENCY] ASC,
+	[ITEMNO] ASC,
+	[PRICELIST] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF

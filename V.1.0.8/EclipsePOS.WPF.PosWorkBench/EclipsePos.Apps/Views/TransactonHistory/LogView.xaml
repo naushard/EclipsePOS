@@ -1,0 +1,372 @@
+﻿<UserControl x:Class="EclipsePos.Apps.Views.TransactonHistory.LogView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:EclipsePos.Apps.Views"
+    xmlns:src ="clr-namespace:EclipsePos.Apps.Views.TransactonHistory"
+     Name="rootControl"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+
+    <UserControl.Resources>
+        <LinearGradientBrush x:Key="OutboxHeaderBrush" EndPoint="0.5,0.173" StartPoint="0.5,0.827">
+            <GradientStop Color="#FF2373BE" Offset="0"/>
+            <GradientStop Color="#FF6496C8" Offset="1"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="BottomPanelBrush" EndPoint="0.5,0.119" StartPoint="0.5,1.081">
+            <GradientStop Color="#FF0F152B" Offset="0"/>
+            <GradientStop Color="#FF5A6496" Offset="1"/>
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="HeaderTextBrush" Color="#FFDCDCE6"/>
+        <SolidColorBrush x:Key="GridBodyBrush" Color="#7F28C8FF"/>
+        <SolidColorBrush x:Key="MenuHeadBrush" Color="#FF176273"/>
+
+        <LinearGradientBrush x:Key="GridShadowBrush" EndPoint="0.5,1.057" StartPoint="0.5,-0.057">
+            <GradientStop Color="#33FFFFFF" Offset="0"/>
+            <GradientStop Color="#00000000" Offset="1"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="PageBackgroundBrush" EndPoint="0.989,0.068" StartPoint="0.718,0.4">
+            <GradientStop Color="#FF30265A" Offset="0"/>
+            <GradientStop Color="#FF80BEE7" Offset="1"/>
+            <GradientStop Color="#FF332B5F" Offset="0.038"/>
+            <GradientStop Color="#FF7DB8E2" Offset="0.966"/>
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="BorderBrush" Color="#FFC1C3DC"/>
+        <!-- XLS Button Style -->
+        <Style x:Key="btnXLS" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <!--Image Width="20" Height="20" Source="..\..\Images\xls.png" / -->
+                            <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RecognizesAccessKey="True"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True"/>
+                            <Trigger Property="IsPressed" Value="True"/>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="GlassyButtonStyle" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ControlTemplate.Resources>
+                            <Storyboard x:Key="Timeline1">
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ButtonBase" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7D6E65"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.1280000" Value="#FF444444"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="Timeline2">
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="ButtonBase">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF444444"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.2520000" Value="#FF7D6E65"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <Grid x:Name="myGrid">
+
+                            <Rectangle Stroke="{x:Null}" RadiusX="5" RadiusY="5" Margin="0,0,0,0" Fill="#FF7D6E65" x:Name="OuterShadow" />
+
+                            <Rectangle Stroke="{x:Null}" RadiusX="5" RadiusY="5" Margin="0,1,0,-1" x:Name="ButtonBase">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FF685950" Offset="0"/>
+                                        <GradientStop Color="#FF7D6E65" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <!-- Image Width="40" Height="40" Source="..\..\Images\0.png" / -->
+                            <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RecognizesAccessKey="True" Margin="10,1,10,1" TextElement.Foreground="White" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard Storyboard="{StaticResource Timeline1}"/>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard x:Name="Timeline2_BeginStoryboard" Storyboard="{StaticResource Timeline2}"/>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+
+
+            <!-- Setter Property="ContentTemplate"    >
+                <Setter.Value>
+                    <DataTemplate x:Name="myDataTemplate" >
+                       <StackPanel Orientation="Vertical" >
+                          <ContentPresenter Content="{Binding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" RecognizesAccessKey="True" Margin="10,1,10,1" TextElement.Foreground="White"/>
+                          <Label FontSize="18" Name="lblFKey" Foreground="Orange" HorizontalContentAlignment="Left"  Content="{Binding}"></Label>
+                       </StackPanel>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter -->
+        </Style>
+
+
+
+        <Style x:Key="ListViewItemStyleBase" TargetType="{x:Type ListViewItem}">
+            <Setter Property="BorderThickness" Value="1,1,1,1" />
+            <Setter Property="BorderBrush" Value="#FF1D0F48" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListViewItem}">
+                        <Border BorderBrush="{DynamicResource GridBrush}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5,5,5,5" Margin="-2,0,0,0"  >
+                            <StackPanel>
+                                <GridViewRowPresenter />
+                            </StackPanel>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Foreground" Value="Red"></Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="LstVwItmStyle1" TargetType="{x:Type ListViewItem}" BasedOn="{StaticResource ListViewItemStyleBase}">
+            <Setter Property="Background" Value="#FFEBEBEB" />
+        </Style>
+
+        <Style x:Key="LstVwItmStyle2" TargetType="{x:Type ListViewItem}" BasedOn="{StaticResource ListViewItemStyleBase}">
+            <Setter Property="Background" Value="#FFC9D5E1" />
+        </Style>
+
+        <local:ListViewItemStyleSelector x:Key="ListViewItemStyleSelector" />
+
+        <!-- TBUC -->
+
+        <Style x:Key="headerStyle1" TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+                        <Border  BorderThickness="2,2,0,2" CornerRadius="5,0,0,5" TextBlock.TextAlignment="Center" Width="{TemplateBinding  Width}" BorderBrush="#FF1D0F48" Background="#FFE2EFC3"  >
+                            <ContentPresenter Content="{TemplateBinding Content}"  ></ContentPresenter>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="headerStyle2" TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+                        <Border  BorderThickness="0,2,0,2" CornerRadius="0,0,0,0" TextBlock.TextAlignment="Center" Width="{TemplateBinding  Width}" BorderBrush="#FF1D0F48" Background="#FFE2EFC3"  >
+                            <ContentPresenter Content="{TemplateBinding Content}"  ></ContentPresenter>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="headerStyle3" TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+                        <Border  BorderThickness="0,2,2,2" CornerRadius="0,5,5,0" TextBlock.TextAlignment="Center" Width="{TemplateBinding  Width}" BorderBrush="#FF1D0F48" Background="#FFE2EFC3"  >
+                            <ContentPresenter Content="{TemplateBinding Content}"  ></ContentPresenter>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <LinearGradientBrush x:Key="LeftPanelGradientBrush" EndPoint="0.208,1.062" StartPoint="0.792,-0.062">
+            <GradientStop Color="#FF0F152B" Offset="0"/>
+            <GradientStop Color="#FF413A70" Offset="1"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="DragNDropGradientBrush" EndPoint="0.012,0.986" StartPoint="0.988,0.014">
+            <GradientStop Color="#FF195078" Offset="0"/>
+            <GradientStop Color="#FF2F5D96" Offset="1"/>
+        </LinearGradientBrush>
+        
+        
+        <Style x:Key="LstVwItmStyleComp" TargetType="{x:Type ListViewItem}" BasedOn="{StaticResource ListViewItemStyleBase}">
+            <Setter Property="Background" Value="#FFEBEBEB" />
+        </Style>
+        
+        <Style x:Key="LstVwItmStyleProgress" TargetType="{x:Type ListViewItem}" BasedOn="{StaticResource ListViewItemStyleBase}">
+            <Setter Property="Background" Value="#FF8EE6BD" />
+        </Style>
+        
+        <Style x:Key="LstVwItmStyleSuspended" TargetType="{x:Type ListViewItem}" BasedOn="{StaticResource ListViewItemStyleBase}">
+            <Setter Property="Background" Value="#FFE68EBD" />
+        </Style>
+
+        <Style x:Key="LstVwItmStyleVoid" TargetType="{x:Type ListViewItem}" BasedOn="{StaticResource ListViewItemStyleBase}">
+            <Setter Property="Background" Value="#FFDBA986" />
+        </Style>
+       
+        <src:SalesmanNameConverter x:Key="salesmanNameConverter"/>
+        <src:StateConverter x:Key="stateConverter"/>
+        <src:TransTypeConverter x:Key="transTypeConverter"/>
+        <src:LogViewStyleSelector x:Key="logViewItemStyleSelector" />
+        
+        
+    </UserControl.Resources>
+
+    <Border  BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" CornerRadius="0,0,10,10" Width="Auto" Height="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="1,1,1,1" >
+
+        <Grid Name="MyGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition ></ColumnDefinition>
+                <ColumnDefinition ></ColumnDefinition>
+                <ColumnDefinition ></ColumnDefinition>
+                <ColumnDefinition ></ColumnDefinition>
+                <ColumnDefinition ></ColumnDefinition>
+                <ColumnDefinition ></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="90"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Name="txtBlockMenuName" Text="Transacion Log" Margin="0,0,0,5" Foreground="#FFFFFFFF" FontSize="17" TextAlignment="Center" Background="{StaticResource MenuHeadBrush}"></TextBlock>
+            <TextBlock  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"  Text="Total Sales" Margin="0,5,0,0" Foreground="#FFF3D76F" FontSize="20" TextAlignment="Center"  HorizontalAlignment="Center" VerticalAlignment="Stretch" ></TextBlock>
+            <TextBlock  Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="3" Name="txtBlockTatalAmt"  Text=""  Margin="0,5,0,0" Foreground="#FFF3D76F" FontSize="20" TextAlignment="Center"  HorizontalAlignment="Left" VerticalAlignment="Stretch" ></TextBlock>
+            <ListView Grid.Row ="1" Grid.Column="0" Grid.ColumnSpan="6" Background ="{DynamicResource GridBrush}"    x:Name="logListView"   ItemsSource ="{Binding}"  FontSize="14" ItemContainerStyleSelector="{StaticResource logViewItemStyleSelector}" IsSynchronizedWithCurrentItem="True" Focusable="False" Margin="3,0,3,0" >
+                <ListView.View>
+                    <GridView AllowsColumnReorder="False"  >
+
+                        <GridViewColumn x:Name="columnHeaderTransNo" Header="Tran#" Width="50"  HeaderContainerStyle="{StaticResource headerStyle2}">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border BorderBrush="{DynamicResource GridBrush}" BorderThickness="0,0,1,0" Margin="0,0,0,0">
+                                        <TextBlock Margin="1,0,0,0" Name="txtBlockTransNo"  Text="{Binding Path=trans_no}"   HorizontalAlignment="Stretch" />
+                                 </Border>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+                        <GridViewColumn  x:Name="columnHeaderSalesAmount" Header="Sales" Width="75"  HeaderContainerStyle="{StaticResource headerStyle2}">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border BorderBrush="{DynamicResource GridBrush}" BorderThickness="0,0,1,0" Margin="0,0,0,0">
+                                        <TextBlock Margin="0,0,1,0" Name ="txtBlockSales" Text="{Binding Path=sales_amt}"  TextAlignment="Right" HorizontalAlignment="Stretch"  />
+                                    </Border>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        
+                        <GridViewColumn x:Name="columnHeaderSalesman" Header="Staff" Width="100"  HeaderContainerStyle="{StaticResource headerStyle2}">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border BorderBrush="{DynamicResource GridBrush}" BorderThickness="0,0,1,0" Margin="0,0,0,0">
+                                        <TextBlock Margin="1,0,0,0" Name="txtBlockSalesman"  Text="{Binding Path=employee_no, Converter={StaticResource salesmanNameConverter } }"   HorizontalAlignment="Stretch" />
+                                </Border>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn >
+                        
+                        <GridViewColumn x:Name="columnHeaderStatus" Header="Status" Width="100"  HeaderContainerStyle="{StaticResource headerStyle2}">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border BorderBrush="{DynamicResource GridBrush}" BorderThickness="0,0,1,0" Margin="0,0,0,0">
+                                        <TextBlock Margin="1,0,0,0" Name="txtBlockStatus"  Text="{Binding Path=state, Converter={StaticResource stateConverter }}"  HorizontalAlignment="Stretch" />
+                                </Border>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        
+                        <GridViewColumn x:Name="columnHeaderTransTypes" Header="Type" Width="100"  HeaderContainerStyle="{StaticResource headerStyle2}">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border BorderBrush="{DynamicResource GridBrush}" BorderThickness="0,0,1,0" Margin="0,0,0,0">
+                                        <TextBlock Margin="1,0,0,0" Name="txtBlockTransType"  Text="{Binding Path=trans_type, Converter={StaticResource transTypeConverter }}"  HorizontalAlignment="Stretch" />
+                                </Border>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+                        <GridViewColumn  x:Name="columnHeaderAmount" Header="Tendered" Width="75"  HeaderContainerStyle="{StaticResource headerStyle2}">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border BorderBrush="{DynamicResource GridBrush}" BorderThickness="0,0,1,0" Margin="0,0,0,0">
+                                        <TextBlock Margin="0,0,1,0" Name ="txtBlockAmount" Text="{Binding Path=amount}"  TextAlignment="Right" HorizontalAlignment="Stretch"  />
+                                 </Border>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn  x:Name="columnHeaderChange" Header="Change" Width="75"  HeaderContainerStyle="{StaticResource headerStyle2}">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border BorderBrush="{DynamicResource GridBrush}" BorderThickness="0,0,1,0" Margin="0,0,0,0">
+                                        <TextBlock Margin="0,0,1,0" Name ="txtBlockChange" Text="{Binding Path=change_amt}"  TextAlignment="Right" HorizontalAlignment="Stretch"  />
+                                 </Border>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        
+                        <GridViewColumn  x:Name="columnHeaderTenderDesc" Header="Ttype" Width="150"  HeaderContainerStyle="{StaticResource headerStyle2}">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border BorderBrush="{DynamicResource GridBrush}" BorderThickness="0,0,1,0" Margin="0,0,0,0">
+                                        <TextBlock Margin="1,0,0,0" Name ="txtBlockTenderType" Text="{Binding Path=tender_desc}"   HorizontalAlignment="Stretch"  />
+                                 </Border>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn  x:Name="columnHeaderStartTime" Header="Start" Width="150"  HeaderContainerStyle="{StaticResource headerStyle2}">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border BorderBrush="{DynamicResource GridBrush}" BorderThickness="0,0,1,0" Margin="0,0,0,0">
+                                        <TextBlock Margin="1,0,0,0" Name ="txtBloclkStartTime" Text="{Binding Path=start_time}"   HorizontalAlignment="Stretch"  />
+                                 </Border>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+                        <GridViewColumn  x:Name="columnHeaderCompleteTime" Header="End" Width="150"  HeaderContainerStyle="{StaticResource headerStyle2}">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border BorderBrush="{DynamicResource GridBrush}" BorderThickness="0,0,1,0" Margin="0,0,0,0">
+                                        <TextBlock Margin="1,0,0,0" Name ="txtBloclkCompleteTime" Text="{Binding Path=complete_time}"   HorizontalAlignment="Stretch"  />
+                                 </Border>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        
+
+
+                        <GridViewColumn x:Name="columnHeaderType" Header="Type" Width="150"  HeaderContainerStyle="{StaticResource headerStyle2}">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border BorderBrush="{DynamicResource GridBrush}" BorderThickness="0,0,1,0" Margin="0,0,0,0">
+                                        <TextBlock Margin="0,0,1,0" Name ="txtBlockDept" Text="{Binding Path=trans_type}"   HorizontalAlignment="Stretch"  />
+                                 </Border>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        
+
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+        </Grid>
+    </Border>
+
+
+
+</UserControl>

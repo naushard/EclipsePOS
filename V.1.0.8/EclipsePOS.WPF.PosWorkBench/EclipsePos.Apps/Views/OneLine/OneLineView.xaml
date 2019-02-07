@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="EclipsePos.Apps.Views.OneLine.OneLineView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="Auto" Width="Auto" Name="rootControl" >
+    <UserControl.Resources>
+        <!-- Storyboard for Synchronizing -->
+        
+        <!-- StoryBoard for Schema changed Animation -->
+        <Storyboard x:Key="StoryboardStartErrorAnimaion">
+            <DoubleAnimation
+				Storyboard.TargetName="imageError"
+				Storyboard.TargetProperty="Opacity"
+				From="1.0" To="0.0" Duration="0:0:0.5"  RepeatBehavior="Forever" AutoReverse="True" />
+        </Storyboard>
+
+        <!-- StoryBoard for Schema changed Animation -->
+        <Storyboard x:Key="StoryboardStartInputAnimaion">
+            <DoubleAnimation
+				Storyboard.TargetName="imageInput"
+				Storyboard.TargetProperty="Opacity"
+				From="1.0" To="0.0" Duration="0:0:0.5"  RepeatBehavior="Forever" AutoReverse="True" />
+        </Storyboard>
+
+        <!-- End of StoryBoard for Schema changed Animation -->
+        <!-- StoryBoard for "End Sync Animation" -->
+        <Storyboard x:Key="StoryboardEndSyncAnimation">
+            <DoubleAnimation
+				  Storyboard.TargetName="imgageError"
+				  Storyboard.TargetProperty="Opacity"
+				  From="1.0" To="0.0" Duration="0:0:3" />
+        </Storyboard>
+        <!-- End of StoryBoard for "End Sync Animation" -->
+
+    </UserControl.Resources>
+    <StackPanel Orientation="Vertical">
+        <Grid Margin="5,5,5,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="7*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition  />
+                <!-- RowDefinition  / -->
+                <!-- RowDefinition  / -->
+            </Grid.RowDefinitions>
+
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Margin="0,0,0,0" Foreground="White"   TextWrapping="Wrap" TextAlignment="Left" Name="oneLineText" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="27"></TextBlock>
+            <Image Grid.Row="0" Grid.Column="1"  x:Name="imageError" HorizontalAlignment="Center" VerticalAlignment="Center"  Height="25" Width="25" Source="..\..\Images\ErrorAlert.png"  Visibility="Hidden" />
+            <Image Grid.Row="0" Grid.Column="1"  x:Name="imageInput" HorizontalAlignment="Center" VerticalAlignment="Center"  Height="45" Width="45" Source="..\..\Images\TouchInput.png"  Visibility="Hidden" />
+            <TextBox Grid.Row="0" Grid.Column="2" Grid.RowSpan="1" Grid.ColumnSpan="1" Margin="0,0,0,0"  Name="oneLineInput"  HorizontalContentAlignment="Right" IsReadOnly="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="27" Background="#FF262626" Foreground="White" ></TextBox>
+            <!-- TextBlock Grid.Row="2" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="2" Margin="0,0,0,0" Foreground="Orange" FontSize="14" TextWrapping="Wrap" TextAlignment="Justify"  Name="oneLineMessages"> 
+             <TextBlock.Triggers>
+                  <EventTrigger RoutedEvent="TextBlock.Loaded"> 
+                    <EventTrigger.Actions> 
+                        <BeginStoryboard>
+                            <Storyboard BeginTime="00:00:00" RepeatBehavior="Forever"  Storyboard.TargetName="oneLineMessages" Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)">
+                                <ColorAnimation From="#FF333333" To="White" Duration="0:0:1"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </TextBlock.Triggers>
+        </TextBlock -->
+        </Grid>
+    </StackPanel>
+</UserControl>

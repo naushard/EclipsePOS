@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5FE0E3F6-6FC6-4170-822E-306622B6C875}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EclipsePos.Data</RootNamespace>
+    <AssemblyName>EclipsePos.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DebugSymbols>true</DebugSymbols>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Windows.Presentation">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CardMedia.cs" />
+    <Compile Include="Currency.cs" />
+    <Compile Include="CurrencyCode.cs" />
+    <Compile Include="Customer.cs" />
+    <Compile Include="Department.cs" />
+    <Compile Include="Dialog.cs" />
+    <Compile Include="DialogEvent.cs" />
+    <Compile Include="Employee.cs" />
+    <Compile Include="EmployeeRoleEvent.cs" />
+    <Compile Include="EmployeeRoles.cs" />
+    <Compile Include="Enumerations.cs" />
+    <Compile Include="InputFilter.cs" />
+    <Compile Include="InputFilterField.cs" />
+    <Compile Include="IRelatable.cs" />
+    <Compile Include="IRelatableSet.cs" />
+    <Compile Include="Item.cs" />
+    <Compile Include="ItemGroup.cs" />
+    <Compile Include="MenuConfig.cs" />
+    <Compile Include="MenuPanels.cs" />
+    <Compile Include="ObjectRelator.cs" />
+    <Compile Include="Organization.cs" />
+    <Compile Include="ORMCommandMap.cs" />
+    <Compile Include="ORMPropertyMap.cs" />
+    <Compile Include="ORMTypeMapping.cs" />
+    <Compile Include="Plu.cs" />
+    <Compile Include="Pos.cs" />
+    <Compile Include="PosConfig.cs" />
+    <Compile Include="PosEmployeeTotal.cs" />
+    <Compile Include="PosKey.cs" />
+    <Compile Include="PosMenu.cs" />
+    <Compile Include="PosParam.cs" />
+    <Compile Include="PosTotal.cs" />
+    <Compile Include="Promotion.cs" />
+    <Compile Include="PromotionMap.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RelationType.cs" />
+    <Compile Include="RetailStore.cs" />
+    <Compile Include="Site.cs" />
+    <Compile Include="SqlRelator.cs" />
+    <Compile Include="StockBalance.cs" />
+    <Compile Include="SubMenu.cs" />
+    <Compile Include="Subscriber.cs" />
+    <Compile Include="SubscriberMap.cs" />
+    <Compile Include="Surcharge.cs" />
+    <Compile Include="TableDetails.cs" />
+    <Compile Include="TableGroup.cs" />
+    <Compile Include="Tax.cs" />
+    <Compile Include="TaxGroup.cs" />
+    <Compile Include="Total.cs" />
+    <Compile Include="Transaction.cs" />
+    <Compile Include="TransBank.cs" />
+    <Compile Include="TransItem.cs" />
+    <Compile Include="TransPromotion.cs" />
+    <Compile Include="TransSalesPerson.cs" />
+    <Compile Include="TransStock.cs" />
+    <Compile Include="TransTax.cs" />
+    <Compile Include="TransTender.cs" />
+    <Compile Include="TransText.cs" />
+    <Compile Include="TransTotal.cs" />
+    <Compile Include="Util\EclipseSettingsProvider.cs" />
+    <Compile Include="Util\PosSettings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ORM.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

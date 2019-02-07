@@ -1,0 +1,616 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{916F7B77-1BF9-4603-B19D-1775D2642300}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EclipsePos.Apps</RootNamespace>
+    <AssemblyName>EclipsePos.Apps</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DebugSymbols>true</DebugSymbols>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.PointOfService, Version=1.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files\Microsoft Point Of Service\SDK\Microsoft.PointOfService.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.PointOfService.ControlBase, Version=1.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files\Microsoft Point Of Service\SDK\Microsoft.PointOfService.ControlBase.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Composite">
+      <HintPath>..\LIB\Microsoft.Practices.Composite.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Composite.Presentation">
+      <HintPath>..\LIB\Microsoft.Practices.Composite.Presentation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Composite.UnityExtensions">
+      <HintPath>..\LIB\Microsoft.Practices.Composite.UnityExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder2, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\LIB\Microsoft.Practices.ObjectBuilder2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\LIB\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\LIB\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Constants\Regions.cs" />
+    <Compile Include="Context\DialogEventProxy.cs" />
+    <Compile Include="Context\PosContext.cs" />
+    <Compile Include="Context\PosEventStack.cs" />
+    <Compile Include="Context\PosParameters.cs" />
+    <Compile Include="Context\PosStack.cs" />
+    <Compile Include="Context\PosStateStack.cs" />
+    <Compile Include="Devices\AlphaKeyEntry.cs" />
+    <Compile Include="Devices\ICustomerLookup.cs" />
+    <Compile Include="Devices\ItemLookup.cs" />
+    <Compile Include="Devices\OperPrompt.cs" />
+    <Compile Include="Devices\PosDisplays.cs" />
+    <Compile Include="Devices\PosHardwareStatusDisplay.cs" />
+    <Compile Include="Devices\PosKeyEnable.cs" />
+    <Compile Include="Devices\PosPanel.cs" />
+    <Compile Include="Devices\PosPrompt.cs" />
+    <Compile Include="Devices\PosTicket.cs" />
+    <Compile Include="Devices\PosTicketHeader.cs" />
+    <Compile Include="Devices\PosTicketTotal.cs" />
+    <Compile Include="Devices\Receipt.cs" />
+    <Compile Include="Devices\ReceiptPrint.cs" />
+    <Compile Include="Devices\ReceiptPrintJob.cs" />
+    <Compile Include="Devices\TerminalPrintJob.cs" />
+    <Compile Include="EclipsePosAppsModule.cs" />
+    <Compile Include="EJournal\EjCCTender_Backup.cs" />
+    <Compile Include="EJournal\Ej.cs" />
+    <Compile Include="EJournal\EjAltCurrTender.cs" />
+    <Compile Include="EJournal\EjBank.cs" />
+    <Compile Include="EJournal\EjCCTender.cs" />
+    <Compile Include="EJournal\EjChequeTender.cs" />
+    <Compile Include="EJournal\EjCoupon.cs" />
+    <Compile Include="EJournal\EjCustomer.cs" />
+    <Compile Include="EJournal\EjDebitCardTender.cs" />
+    <Compile Include="EJournal\EjDebtTender.cs" />
+    <Compile Include="EJournal\EjFreeText.cs" />
+    <Compile Include="EJournal\EjGiftCertTender.cs" />
+    <Compile Include="EJournal\EjHeader.cs" />
+    <Compile Include="EJournal\EjItem.cs" />
+    <Compile Include="EJournal\EjLine.cs" />
+    <Compile Include="EJournal\EjPriceOverride.cs" />
+    <Compile Include="EJournal\EjPromotion.cs" />
+    <Compile Include="EJournal\EjReceiveOnAccount.cs" />
+    <Compile Include="EJournal\EjSalesPerson.cs" />
+    <Compile Include="EJournal\EjSurcharge.cs" />
+    <Compile Include="EJournal\EjTax.cs" />
+    <Compile Include="EJournal\EjTender.cs" />
+    <Compile Include="Hardware\CashDrawerWrapper.cs" />
+    <Compile Include="Hardware\HardwareSupport.cs" />
+    <Compile Include="Hardware\HidMsr.cs" />
+    <Compile Include="Hardware\LineDisplayWrapper.cs" />
+    <Compile Include="Hardware\MsrDataParser.cs" />
+    <Compile Include="Hardware\MsrWrapper.cs" />
+    <Compile Include="Hardware\PCKeyboard.cs" />
+    <Compile Include="Hardware\PCKeyboardHook.cs" />
+    <Compile Include="Hardware\PosHardware.cs" />
+    <Compile Include="Hardware\PosKeyboardWrapper.cs" />
+    <Compile Include="Hardware\PosPrinterWrapper.cs" />
+    <Compile Include="Hardware\ScannerWrapper.cs" />
+    <Compile Include="Operators\CheckDigit.cs" />
+    <Compile Include="Operators\Filter.cs" />
+    <Compile Include="Operators\Filters.cs" />
+    <Compile Include="Operators\FixedAmountDiscount.cs" />
+    <Compile Include="Operators\GroupDiscount.cs" />
+    <Compile Include="Operators\ItemDiscount.cs" />
+    <Compile Include="Operators\ItemList.cs" />
+    <Compile Include="Operators\MathVAT.cs" />
+    <Compile Include="Operators\NForX.cs" />
+    <Compile Include="Operators\PosItemModifier.cs" />
+    <Compile Include="Operators\PosMath.cs" />
+    <Compile Include="Operators\GetDiscountFromInput.cs" />
+    <Compile Include="Operators\RoundDownToFactorN.cs" />
+    <Compile Include="Operators\SimpleMath.cs" />
+    <Compile Include="Operators\PercentageDiscount.cs" />
+    <Compile Include="PosEvents\AlphaKey.cs" />
+    <Compile Include="PosEvents\AltCurrTender.cs" />
+    <Compile Include="PosEvents\AutoRoundingAdjustment.cs" />
+    <Compile Include="PosEvents\CashTender.cs" />
+    <Compile Include="PosEvents\ChangeQuantity.cs" />
+    <Compile Include="PosEvents\CheckHardware.cs" />
+    <Compile Include="PosEvents\CheckTender.cs" />
+    <Compile Include="PosEvents\ClearKey.cs" />
+    <Compile Include="PosEvents\ClearPreviousKeyStroke.cs" />
+    <Compile Include="PosEvents\CloseCashDrawer.cs" />
+    <Compile Include="PosEvents\CreditTender.cs" />
+    <Compile Include="PosEvents\Customer.cs" />
+    <Compile Include="PosEvents\CustomerLookupEvent.cs" />
+    <Compile Include="PosEvents\DebitCardTender.cs" />
+    <Compile Include="PosEvents\DebtTender.cs" />
+    <Compile Include="PosEvents\DecimalKey.cs" />
+    <Compile Include="PosEvents\Discount.cs" />
+    <Compile Include="PosEvents\DiscountInput.cs" />
+    <Compile Include="PosEvents\EnterKey.cs" />
+    <Compile Include="PosEvents\Enumerators.cs" />
+    <Compile Include="PosEvents\ExecScript.cs" />
+    <Compile Include="PosEvents\Exit.cs" />
+    <Compile Include="PosEvents\FreeText.cs" />
+    <Compile Include="PosEvents\FinishTransaction.cs" />
+    <Compile Include="PosEvents\HardwareError.cs" />
+    <Compile Include="PosEvents\HomeGUI.cs" />
+    <Compile Include="PosEvents\InputStartUpParameters.cs" />
+    <Compile Include="PosEvents\ItemGroupPrompt.cs" />
+    <Compile Include="PosEvents\ItemMarkdown.cs" />
+    <Compile Include="PosEvents\ItemsMenu.cs" />
+    <Compile Include="PosEvents\ItemVoid.cs" />
+    <Compile Include="PosEvents\KeyboardUtility.cs" />
+    <Compile Include="PosEvents\KeyEvent.cs" />
+    <Compile Include="PosEvents\AddSalesPerson.cs" />
+    <Compile Include="PosEvents\LoadQuickSalesDialog.cs" />
+    <Compile Include="PosEvents\OpenDrawer.cs" />
+    <Compile Include="PosEvents\PrintEj.cs" />
+    <Compile Include="PosEvents\QuickSaleItem.cs" />
+    <Compile Include="PosEvents\RecallEjFromLog.cs" />
+    <Compile Include="PosEvents\RemoveSalesPerson.cs" />
+    <Compile Include="PosEvents\SalesLog.cs" />
+    <Compile Include="PosEvents\MergeOrder.cs" />
+    <Compile Include="PosEvents\OpenOrdersList.cs" />
+    <Compile Include="PosEvents\PrintKitchenTicket.cs" />
+    <Compile Include="PosEvents\MenuNavigator.cs" />
+    <Compile Include="PosEvents\Lock.cs" />
+    <Compile Include="PosEvents\LogOff.cs" />
+    <Compile Include="PosEvents\LogOn.cs" />
+    <Compile Include="PosEvents\LookupEvent.cs" />
+    <Compile Include="PosEvents\LookupItem.cs" />
+    <Compile Include="PosEvents\MediaText.cs" />
+    <Compile Include="PosEvents\MediaValue.cs" />
+    <Compile Include="PosEvents\MultKey.cs" />
+    <Compile Include="PosEvents\NewLogon.cs" />
+    <Compile Include="PosEvents\NumKey.cs" />
+    <Compile Include="PosEvents\PrintOrderTicket.cs" />
+    <Compile Include="PosEvents\PageDown.cs" />
+    <Compile Include="PosEvents\PageUp.cs" />
+    <Compile Include="PosEvents\PaidIn.cs" />
+    <Compile Include="PosEvents\PaidOut.cs" />
+    <Compile Include="PosEvents\PettyCash.cs" />
+    <Compile Include="PosEvents\PickUp.cs" />
+    <Compile Include="PosEvents\Plu.cs" />
+    <Compile Include="PosEvents\PosDialogEvent.cs" />
+    <Compile Include="PosEvents\PosError.cs" />
+    <Compile Include="PosEvents\PosEvent.cs" />
+    <Compile Include="PosEvents\PosNull.cs" />
+    <Compile Include="PosEvents\PosNumberDialog.cs" />
+    <Compile Include="PosEvents\PriceOverride.cs" />
+    <Compile Include="PosEvents\PromptPrintReceipt.cs" />
+    <Compile Include="PosEvents\Quantity.cs" />
+    <Compile Include="PosEvents\RecallEj.cs" />
+    <Compile Include="PosEvents\ReceiveOnAccount.cs" />
+    <Compile Include="PosEvents\RegisterOpen.cs" />
+    <Compile Include="PosEvents\ReturnSale.cs" />
+    <Compile Include="PosEvents\SaveEj.cs" />
+    <Compile Include="PosEvents\SelectTable.cs" />
+    <Compile Include="PosEvents\SelectTableGroup.cs" />
+    <Compile Include="PosEvents\StartTransaction.cs" />
+    <Compile Include="PosEvents\Subtotal.cs" />
+    <Compile Include="PosEvents\AddSurcharge.cs" />
+    <Compile Include="PosEvents\SystemManager.cs" />
+    <Compile Include="PosEvents\TerminalReport.cs" />
+    <Compile Include="PosEvents\ToggleAltTax.cs" />
+    <Compile Include="PosEvents\ToggleDineInOut.cs" />
+    <Compile Include="PosEvents\Total.cs" />
+    <Compile Include="PosEvents\TrainingMode.cs" />
+    <Compile Include="PosEvents\UnLock.cs" />
+    <Compile Include="PosEvents\VoidSale.cs" />
+    <Compile Include="PosEvents\Weight.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Util\EclipseSettingsProvider.cs" />
+    <Compile Include="Util\MD5HashHelper.cs" />
+    <Compile Include="Util\PosSettings.cs" />
+    <Compile Include="Util\PosTextFormatter.cs" />
+    <Compile Include="Util\PrintJobQueue.cs" />
+    <Compile Include="Util\PrintWorker.cs" />
+    <Compile Include="Views\AlphaKeyPad\AlphaKeyPresenter.cs" />
+    <Compile Include="Views\AlphaKeyPad\AlphaKeyView.xaml.cs">
+      <DependentUpon>AlphaKeyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AlphaKeyPad\IAlphaKey.cs" />
+    <Compile Include="Views\BottomMenu\BottomMenuPresenter.cs" />
+    <Compile Include="Views\BottomMenu\BottomMenuView.xaml.cs">
+      <DependentUpon>BottomMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BottomMenu\IBottomMenu.cs" />
+    <Compile Include="Views\BottomMenu\Controls\PosButton.cs" />
+    <Compile Include="Views\CustomerSearch\CustomerSearchPresenter.cs" />
+    <Compile Include="Views\CustomerSearch\CustomerSearchView.xaml.cs">
+      <DependentUpon>CustomerSearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CustomerSearch\ICustomerSearch.cs" />
+    <Compile Include="Views\Employees\EmployeeView.xaml.cs">
+      <DependentUpon>EmployeeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Employees\EmployeeViewPresenter.cs" />
+    <Compile Include="Views\Employees\IEmplyee.cs" />
+    <Compile Include="Views\InvoiceHeader\IInvoiceHeader.cs" />
+    <Compile Include="Views\InvoiceHeader\InvoiceHeaderPresenter.cs" />
+    <Compile Include="Views\InvoiceHeader\InvoiceHeaderView.xaml.cs">
+      <DependentUpon>InvoiceHeaderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InvoiceTotals\IInvoiceTotal.cs" />
+    <Compile Include="Views\InvoiceTotals\InvoiceTotalPresenter.cs" />
+    <Compile Include="Views\InvoiceTotals\InvoiceTotalView.xaml.cs">
+      <DependentUpon>InvoiceTotalView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Invoice\IInvoice.cs" />
+    <Compile Include="Views\Invoice\InvoiceLineInfo.cs" />
+    <Compile Include="Views\Invoice\InvoiceLines.cs" />
+    <Compile Include="Views\Invoice\InvoicePresenter.cs" />
+    <Compile Include="Views\Invoice\InvoiceView.xaml.cs">
+      <DependentUpon>InvoiceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Invoice\LineNumberConverter.cs" />
+    <Compile Include="Views\ItemDetails\IItem.cs" />
+    <Compile Include="Views\ItemDetails\ItemPresenter.cs" />
+    <Compile Include="Views\ItemDetails\ItemView.xaml.cs">
+      <DependentUpon>ItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ItemGroupDetails\IItemGroupDetails.cs" />
+    <Compile Include="Views\ItemGroupDetails\ItemGroupDetailsPresenter.cs" />
+    <Compile Include="Views\ItemGroupDetails\ItemGroupDetailsView.xaml.cs">
+      <DependentUpon>ItemGroupDetailsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ItemGroup\IItemGroup.cs" />
+    <Compile Include="Views\ItemGroup\ItemGroupPresenter.cs" />
+    <Compile Include="Views\ItemGroup\ItemGroupView.xaml.cs">
+      <DependentUpon>ItemGroupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ItemSearch\IItemSearch.cs" />
+    <Compile Include="Views\ItemSearch\ItemSearchPresenter.cs" />
+    <Compile Include="Views\ItemSearch\ItemSearchView.xaml.cs">
+      <DependentUpon>ItemSearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\KeyPad\IKeyPad.cs" />
+    <Compile Include="Views\KeyPad\KeyPadPresenter.cs" />
+    <Compile Include="Views\KeyPad\KeyPadView.xaml.cs">
+      <DependentUpon>KeyPadView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LeftMenu\ILeftMenu.cs" />
+    <Compile Include="Views\LeftMenu\LeftMenuPresenter.cs" />
+    <Compile Include="Views\LeftMenu\LeftMenuView.xaml.cs">
+      <DependentUpon>LeftMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListViewItemStyleSelector.cs" />
+    <Compile Include="Views\OneLine\IOneLine.cs" />
+    <Compile Include="Views\OneLine\OneLinePresenter.cs" />
+    <Compile Include="Views\OneLine\OneLineView.xaml.cs">
+      <DependentUpon>OneLineView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OrderList\IOpenOrders.cs" />
+    <Compile Include="Views\OrderList\OpenOrdersPresenter.cs" />
+    <Compile Include="Views\OrderList\OpenOrdersView.xaml.cs">
+      <DependentUpon>OpenOrdersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OrderList\OrderTypeConverter.cs" />
+    <Compile Include="Views\Progress\IProgress.cs" />
+    <Compile Include="Views\Progress\ProgressPresenter.cs" />
+    <Compile Include="Views\Progress\ProgressView.xaml.cs">
+      <DependentUpon>ProgressView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TableGroupSelect\ITableGroup.cs" />
+    <Compile Include="Views\TableGroupSelect\TableGroupPresenter.cs" />
+    <Compile Include="Views\TableGroupSelect\TableGroupView.xaml.cs">
+      <DependentUpon>TableGroupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TableSelect\ITable.cs" />
+    <Compile Include="Views\TableSelect\TableButtonData.cs" />
+    <Compile Include="Views\TableSelect\TablePresenter.cs" />
+    <Compile Include="Views\TableSelect\TableView.xaml.cs">
+      <DependentUpon>TableView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TransactonHistory\ILogView.cs" />
+    <Compile Include="Views\TransactonHistory\LogViewPresenter.cs" />
+    <Compile Include="Views\TransactonHistory\LogView.xaml.cs">
+      <DependentUpon>LogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TransactonHistory\LogViewStyleSelector.cs" />
+    <Compile Include="Views\TransactonHistory\SalesmanNameConverter.cs" />
+    <Compile Include="Views\TransactonHistory\SalesmanNamesHelper.cs" />
+    <Compile Include="Views\TransactonHistory\StateConverter.cs" />
+    <Compile Include="Views\TransactonHistory\TransTypeConverter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Views\AlphaKeyPad\AlphaKeyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BottomMenu\BottomMenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CustomerSearch\CustomerSearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Employees\EmployeeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\InvoiceHeader\InvoiceHeaderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\InvoiceTotals\InvoiceTotalView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Invoice\InvoiceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ItemDetails\ItemView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ItemGroupDetails\ItemGroupDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ItemGroup\ItemGroupView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ItemSearch\ItemSearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\KeyPad\KeyPadView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LeftMenu\LeftMenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\OneLine\OneLineView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\OrderList\OpenOrdersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Progress\ProgressView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TableGroupSelect\TableGroupView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TableSelect\TableView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TransactonHistory\LogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EclipsePos.Data\EclipsePos.Data.csproj">
+      <Project>{5FE0E3F6-6FC6-4170-822E-306622B6C875}</Project>
+      <Name>EclipsePos.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Hardware\PosPrinterWrapper.resx">
+      <DependentUpon>PosPrinterWrapper.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\A1.ico" />
+    <Resource Include="Images\A4.ico" />
+    <Resource Include="Images\A5.ico" />
+    <Resource Include="Images\A6.ico" />
+    <Resource Include="Images\A7.ico" />
+    <Resource Include="Images\B2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\EclipsePOS_Startup2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\CashDrawer.ico" />
+    <Resource Include="Images\PosPrinter.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\tick.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\MSR.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Scanner.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\LineDisplay_2.png">
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Scanner1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Eclipse_banner.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Alert.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\0.png" />
+    <Resource Include="Images\00.png" />
+    <Resource Include="Images\1.png" />
+    <Resource Include="Images\2.png" />
+    <Resource Include="Images\3.png" />
+    <Resource Include="Images\4.png" />
+    <Resource Include="Images\5.png" />
+    <Resource Include="Images\6.png" />
+    <Resource Include="Images\7.png" />
+    <Resource Include="Images\8.png" />
+    <Resource Include="Images\9.png" />
+    <Resource Include="Images\Enter.png" />
+    <Resource Include="Images\Clear.png" />
+    <Resource Include="Images\Down.png" />
+    <Resource Include="Images\Discount.png" />
+    <Resource Include="Images\Home.png" />
+    <Resource Include="Images\Decimal.png" />
+    <Resource Include="Images\Log.png" />
+    <Resource Include="Images\Backspace.png" />
+    <Resource Include="Images\Alpha.png" />
+    <Resource Include="Images\Keyboard.png" />
+    <Resource Include="Images\EclipsePOS15.png" />
+    <Resource Include="Images\ChangeQty.png" />
+    <Resource Include="Images\ChangePrice.png" />
+    <Resource Include="Images\FreeText.png" />
+    <Resource Include="Images\AddStaff.png" />
+    <Resource Include="Images\Manager.png" />
+    <Resource Include="Images\MoreOptions.png" />
+    <Resource Include="Images\Alert1.jpg" />
+    <Resource Include="Images\images %282%29.jpg" />
+    <Resource Include="Images\ErrorAlert.png" />
+    <Resource Include="Images\Amex.gif" />
+    <Resource Include="Images\Discover.gif" />
+    <Resource Include="Images\MasterCard.gif" />
+    <Resource Include="Images\nets.jpg" />
+    <Resource Include="Images\DinersClub.png" />
+    <Resource Include="Images\OpenDrawer.png" />
+    <Content Include="Images\pcalc-sc-mc.png" />
+    <Resource Include="Images\Visa.gif" />
+    <Resource Include="Images\TouchInput.png" />
+    <Resource Include="Images\Tender.png" />
+    <Resource Include="Images\RecallOrder.png" />
+    <Resource Include="Images\SaveOrder.png" />
+    <Resource Include="Images\VoidSales.png" />
+    <Resource Include="Images\VoidItem.png" />
+    <Resource Include="Images\QuickSales.png" />
+    <Resource Include="Images\ScrollDown.png" />
+    <Resource Include="Images\ScrollUp.png" />
+    <Resource Include="Images\Print.png" />
+    <Resource Include="Images\Quantity.png" />
+    <Resource Include="Images\Search.png" />
+    <Resource Include="Images\Up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\CustomerDetails\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

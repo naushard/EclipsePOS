@@ -1,0 +1,267 @@
+﻿<UserControl x:Class="EclipsePos.Apps.Views.AlphaKeyPad.AlphaKeyView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="Auto" Width="Auto" Name="rootControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <UserControl.Resources>
+        <LinearGradientBrush x:Key="OutboxHeaderBrush" EndPoint="0.5,0.173" StartPoint="0.5,0.827">
+            <GradientStop Color="#FF2373BE" Offset="0"/>
+            <GradientStop Color="#FF6496C8" Offset="1"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="BottomPanelBrush" EndPoint="0.5,0.119" StartPoint="0.5,1.081">
+            <GradientStop Color="#FF0F152B" Offset="0"/>
+            <GradientStop Color="#FF5A6496" Offset="1"/>
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="HeaderTextBrush" Color="#FFDCDCE6"/>
+        <SolidColorBrush x:Key="GridBodyBrush" Color="#7F28C8FF"/>
+
+        <LinearGradientBrush x:Key="GridShadowBrush" EndPoint="0.5,1.057" StartPoint="0.5,-0.057">
+            <GradientStop Color="#33FFFFFF" Offset="0"/>
+            <GradientStop Color="#00000000" Offset="1"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="PageBackgroundBrush" EndPoint="0.989,0.068" StartPoint="0.718,0.4">
+            <GradientStop Color="#FF30265A" Offset="0"/>
+            <GradientStop Color="#FF80BEE7" Offset="1"/>
+            <GradientStop Color="#FF332B5F" Offset="0.038"/>
+            <GradientStop Color="#FF7DB8E2" Offset="0.966"/>
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="BorderBrush" Color="#FFC1C3DC"/>
+
+        <Style x:Key="AlphaButtonStyle" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ControlTemplate.Resources>
+                            <Storyboard x:Key="Timeline1">
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ButtonBase" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#FFE5E5E5"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.1280000" Value="#FF444444"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="Timeline2">
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="ButtonBase">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF444444"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.2520000" Value="#FFE5E5E5"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <Grid>
+
+                            <Rectangle Stroke="{x:Null}" RadiusX="5" RadiusY="5" Margin="0,0,0,0" Fill="#FFE5E5E5" x:Name="OuterShadow">
+                            </Rectangle>
+                            <Rectangle Stroke="{x:Null}" RadiusX="5" RadiusY="5" Margin="2,3,2,1" x:Name="ButtonBase">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FFCFCFCF" Offset="0"/>
+                                        <GradientStop Color="#FFE5E5E5" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <Image Width="70" Height="70"  Source="{Binding Path=DefaultImageSource,ElementName=uc}"/>
+                            <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RecognizesAccessKey="True" Margin="10,1,10,1" TextElement.Foreground="Black" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard Storyboard="{StaticResource Timeline1}"/>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard x:Name="Timeline2_BeginStoryboard" Storyboard="{StaticResource Timeline2}"/>
+                                </Trigger.ExitActions>
+                            </Trigger>
+
+                            <Trigger Property="IsEnabled" Value="True"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+        <Style x:Key="ButtonStyle_Enter" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ControlTemplate.Resources>
+                            <Storyboard x:Key="Timeline1">
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ButtonBase" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#FFF78D34"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.1280000" Value="#FF444444"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="Timeline2">
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="ButtonBase">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF444444"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.2520000" Value="#FFF78D34"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <Grid>
+
+                            <Rectangle Stroke="{x:Null}" RadiusX="5" RadiusY="5" Margin="0,0,0,0" Fill="#FFF78D34" x:Name="OuterShadow">
+                            </Rectangle>
+                            <Rectangle Stroke="{x:Null}" RadiusX="5" RadiusY="5" Margin="2,3,2,1" x:Name="ButtonBase">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FFDE741B" Offset="0"/>
+                                        <GradientStop Color="#FFF78d34" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <Image Width="70" Height="70" Source="..\..\Images\Enter.png" />
+                            <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RecognizesAccessKey="True" Margin="10,1,10,1" TextElement.Foreground="White" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard Storyboard="{StaticResource Timeline1}"/>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard x:Name="Timeline2_BeginStoryboard" Storyboard="{StaticResource Timeline2}"/>
+                                </Trigger.ExitActions>
+                            </Trigger>
+
+                            <Trigger Property="IsEnabled" Value="True"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ButtonStyle_Clear" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ControlTemplate.Resources>
+                            <Storyboard x:Key="Timeline1">
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ButtonBase" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF37A77C"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.1280000" Value="#FF444444"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="Timeline2">
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="ButtonBase">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF444444"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.2520000" Value="#FF37A77C"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <Grid>
+
+                            <Rectangle Stroke="{x:Null}" RadiusX="5" RadiusY="5" Margin="0,0,0,0" Fill="#FF0BC68B" x:Name="OuterShadow">
+                            </Rectangle>
+                            <Rectangle Stroke="{x:Null}" RadiusX="5" RadiusY="5" Margin="2,3,2,1" x:Name="ButtonBase">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FF37A77C" Offset="0"/>
+                                        <GradientStop Color="#FF3AAF80" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <!-- Image Width="70" Height="70" Source="..\..\Images\Clear.png" /-->
+                            <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RecognizesAccessKey="True" Margin="10,1,10,1" TextElement.Foreground="White" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard Storyboard="{StaticResource Timeline1}"/>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard x:Name="Timeline2_BeginStoryboard" Storyboard="{StaticResource Timeline2}"/>
+                                </Trigger.ExitActions>
+                            </Trigger>
+
+                            <Trigger Property="IsEnabled" Value="True"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+        <Style x:Key="ButtonStyle_Num" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ControlTemplate.Resources>
+                            <Storyboard x:Key="Timeline1">
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ButtonBase" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF505558"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.1280000" Value="#FF444444"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="Timeline2">
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="ButtonBase">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF444444"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.2520000" Value="#FF505558"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <Grid>
+
+                            <Rectangle Stroke="{x:Null}" RadiusX="5" RadiusY="5" Margin="0,0,0,0" Fill="#FF63686B" x:Name="OuterShadow">
+                            </Rectangle>
+                            <Rectangle Stroke="{x:Null}" RadiusX="5" RadiusY="5" Margin="2,3,2,1" x:Name="ButtonBase">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FF505558" Offset="0"/>
+                                        <GradientStop Color="#FF63686B" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <!-- Image Width="70" Height="70" Source="..\..\Images\Up.png" / -->
+                            <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RecognizesAccessKey="True" Margin="10,1,10,1" TextElement.Foreground="White" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard Storyboard="{StaticResource Timeline1}"/>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard x:Name="Timeline2_BeginStoryboard" Storyboard="{StaticResource Timeline2}"/>
+                                </Trigger.ExitActions>
+                            </Trigger>
+
+                            <Trigger Property="IsEnabled" Value="True"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+
+
+
+    </UserControl.Resources>
+
+    <StackPanel>
+        <Border  BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" CornerRadius="0,0,0,0" Margin="1,1,1,1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid Name="KeyPadGrid" Margin="0, 0, 0, 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*" ></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition ></RowDefinition>
+                        <RowDefinition ></RowDefinition>
+                        <RowDefinition ></RowDefinition>
+                    </Grid.RowDefinitions>
+                
+            </Grid>
+        </Border>
+    </StackPanel>
+
+</UserControl>

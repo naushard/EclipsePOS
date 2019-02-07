@@ -1,0 +1,183 @@
+﻿<UserControl x:Class="EclipsePos.Apps.Views.TableGroupSelect.TableGroupView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Name="rootControl">
+    <UserControl.Resources>
+        <LinearGradientBrush x:Key="OutboxHeaderBrush" EndPoint="0.5,0.173" StartPoint="0.5,0.827">
+            <GradientStop Color="#FF2373BE" Offset="0"/>
+            <GradientStop Color="#FF6496C8" Offset="1"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="BottomPanelBrush" EndPoint="0.5,0.119" StartPoint="0.5,1.081">
+            <GradientStop Color="#FF0F152B" Offset="0"/>
+            <GradientStop Color="#FF5A6496" Offset="1"/>
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="HeaderTextBrush" Color="#FFDCDCE6"/>
+        <SolidColorBrush x:Key="GridBodyBrush" Color="#7F28C8FF"/>
+
+        <LinearGradientBrush x:Key="GridShadowBrush" EndPoint="0.5,1.057" StartPoint="0.5,-0.057">
+            <GradientStop Color="#33FFFFFF" Offset="0"/>
+            <GradientStop Color="#00000000" Offset="1"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="PageBackgroundBrush" EndPoint="0.989,0.068" StartPoint="0.718,0.4">
+            <GradientStop Color="#FF30265A" Offset="0"/>
+            <GradientStop Color="#FF80BEE7" Offset="1"/>
+            <GradientStop Color="#FF332B5F" Offset="0.038"/>
+            <GradientStop Color="#FF7DB8E2" Offset="0.966"/>
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="BorderBrush" Color="#FFC1C3DC"/>
+
+        <Style x:Key="GlassyButtonStyle" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ControlTemplate.Resources>
+                            <Storyboard x:Key="Timeline1">
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ButtonBase" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF7D6E65"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.1280000" Value="#FF444444"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="Timeline2">
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="ButtonBase">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF444444"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.2520000" Value="#FF7D6E65"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <Grid x:Name="myGrid">
+
+                            <Rectangle Stroke="{x:Null}" RadiusX="5" RadiusY="5" Margin="0,0,0,0" Fill="#FF7D6E65" x:Name="OuterShadow" />
+
+                            <Rectangle Stroke="{x:Null}" RadiusX="5" RadiusY="5" Margin="0,1,0,-1" x:Name="ButtonBase">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FF685950" Offset="0"/>
+                                        <GradientStop Color="#FF7D6E65" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <StackPanel  Orientation="Vertical"  >
+                                <!-- Image Width="40" Height="40" Source="..\..\Images\QuickSales.png" / -->
+                                <Image Width="40" Height="40" Source="{Binding Path=Tag, RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Center" />
+                                <ContentPresenter>
+                                    <ContentPresenter.ContentTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding}"   TextWrapping="Wrap" TextAlignment="Center" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                        </DataTemplate>
+                                    </ContentPresenter.ContentTemplate>
+                                </ContentPresenter>
+                            </StackPanel>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard Storyboard="{StaticResource Timeline1}"/>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard x:Name="Timeline2_BeginStoryboard" Storyboard="{StaticResource Timeline2}"/>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+        
+        <Style x:Key="ClearKeyButtonStyle" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ControlTemplate.Resources>
+                            <Storyboard x:Key="Timeline1">
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ButtonBase" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF008EB5"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.1280000" Value="#FF00C8FF"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="Timeline2">
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="ButtonBase">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF00C8FF"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.2520000" Value="#FF008EB5"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <Grid>
+                            <Rectangle Stroke="{x:Null}" RadiusX="5" RadiusY="5" x:Name="Reflection" Margin="0,0,0,-20.646" VerticalAlignment="Bottom" Height="18">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="0.497,0.515" StartPoint="0.499,-0.119">
+                                        <GradientStop Color="#2DFFFFFF" Offset="0"/>
+                                        <GradientStop Color="#00FFFFFF" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <Rectangle Stroke="{x:Null}" RadiusX="5" RadiusY="5" Margin="0,1,0,-1" x:Name="ButtonBase">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                                        <GradientStop Color="#FF00598C" Offset="0"/>
+                                        <GradientStop Color="#FF008EB5" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <Rectangle Stroke="{x:Null}" RadiusX="5" RadiusY="5" Margin="0,0.999,0,-0.999" x:Name="GlassyTop">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="0.496,0.626" StartPoint="0.5,-0.008">
+                                        <GradientStop Color="#4CFFFFFF" Offset="0"/>
+                                        <GradientStop Color="#00FFFFFF" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RecognizesAccessKey="True" Margin="10,1,10,1" TextElement.Foreground="White" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard Storyboard="{StaticResource Timeline1}"/>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard x:Name="Timeline2_BeginStoryboard" Storyboard="{StaticResource Timeline2}"/>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True"/>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <LinearGradientBrush x:Key="LeftPanelGradientBrush" EndPoint="0.208,1.062" StartPoint="0.792,-0.062">
+            <GradientStop Color="#FF0F152B" Offset="0"/>
+            <GradientStop Color="#FF413A70" Offset="1"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="DragNDropGradientBrush" EndPoint="0.012,0.986" StartPoint="0.988,0.014">
+            <GradientStop Color="#FF195078" Offset="0"/>
+            <GradientStop Color="#FF2F5D96" Offset="1"/>
+        </LinearGradientBrush>
+    </UserControl.Resources>
+
+    <!-- Border  BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" CornerRadius="10,10,10,10" Width="Auto" Height="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="3,3,3,0"  -->
+
+        <Grid Name="TableGroupGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <!-- Button Grid.Column="0" Grid.Row="0"  Style="{DynamicResource GlassyButtonStyle}"  FontSize="12" Name="btnF8"  Command="{Binding}"  Content="Exit" HorizontalAlignment="Stretch" Margin="10,10,5,10" / -->
+
+        </Grid>
+
+    <!-- /Border -->
+
+</UserControl>

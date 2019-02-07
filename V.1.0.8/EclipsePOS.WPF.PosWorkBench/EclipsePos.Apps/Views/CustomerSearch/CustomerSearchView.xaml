@@ -1,0 +1,420 @@
+﻿<UserControl x:Class="EclipsePos.Apps.Views.CustomerSearch.CustomerSearchView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:EclipsePos.Apps.Views"
+     Name="rootControl"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+
+    <UserControl.Resources>
+        <Storyboard x:Key="OnLoadedTransition">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rootControl" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:01" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <LinearGradientBrush x:Key="OutboxHeaderBrush" EndPoint="0.5,0.173" StartPoint="0.5,0.827">
+            <GradientStop Color="#FF2373BE" Offset="0"/>
+            <GradientStop Color="#FF6496C8" Offset="1"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="BottomPanelBrush" EndPoint="0.5,0.119" StartPoint="0.5,1.081">
+            <GradientStop Color="#FF0F152B" Offset="0"/>
+            <GradientStop Color="#FF5A6496" Offset="1"/>
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="HeaderTextBrush" Color="#FFDCDCE6"/>
+        <SolidColorBrush x:Key="GridBodyBrush" Color="#7F28C8FF"/>
+
+        <LinearGradientBrush x:Key="GridShadowBrush" EndPoint="0.5,1.057" StartPoint="0.5,-0.057">
+            <GradientStop Color="#33FFFFFF" Offset="0"/>
+            <GradientStop Color="#00000000" Offset="1"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="PageBackgroundBrush" EndPoint="0.989,0.068" StartPoint="0.718,0.4">
+            <GradientStop Color="#FF30265A" Offset="0"/>
+            <GradientStop Color="#FF80BEE7" Offset="1"/>
+            <GradientStop Color="#FF332B5F" Offset="0.038"/>
+            <GradientStop Color="#FF7DB8E2" Offset="0.966"/>
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="BorderBrush" Color="#FFC1C3DC"/>
+        <!-- XLS Button Style -->
+        <Style x:Key="btnXLS" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <!--Image Width="20" Height="20" Source="..\..\Images\xls.png" / -->
+                            <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RecognizesAccessKey="True"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True"/>
+                            <Trigger Property="IsPressed" Value="True"/>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="GlassyButtonStyle" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ControlTemplate.Resources>
+                            <Storyboard x:Key="Timeline1">
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ButtonBase" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF008EB5"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.1280000" Value="#FF00C8FF"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="Timeline2">
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="ButtonBase">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF00C8FF"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.2520000" Value="#FF008EB5"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <Grid>
+                            <!-- Rectangle Stroke="{x:Null}" RadiusX="5" RadiusY="5" x:Name="Reflection" Margin="0,0,0,-20.646" VerticalAlignment="Bottom" Height="18">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="0.497,0.515" StartPoint="0.499,-0.119">
+                                        <GradientStop Color="#2DFFFFFF" Offset="0"/>
+                                        <GradientStop Color="#00FFFFFF" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle -->
+                            <Rectangle Stroke="{x:Null}" RadiusX="5" RadiusY="5" Margin="0,1,0,-1" x:Name="ButtonBase">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                                        <GradientStop Color="#FF00598C" Offset="0"/>
+                                        <GradientStop Color="#FF008EB5" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <Rectangle Stroke="{x:Null}" RadiusX="5" RadiusY="5" Margin="0,0.999,0,-0.999" x:Name="GlassyTop">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="0.496,0.626" StartPoint="0.5,-0.008">
+                                        <GradientStop Color="#4CFFFFFF" Offset="0"/>
+                                        <GradientStop Color="#00FFFFFF" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RecognizesAccessKey="True" Margin="10,1,10,1" TextElement.Foreground="White" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard Storyboard="{StaticResource Timeline1}"/>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard x:Name="Timeline2_BeginStoryboard" Storyboard="{StaticResource Timeline2}"/>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True"/>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ListViewItemStyleBase" TargetType="{x:Type ListViewItem}">
+            <Setter Property="BorderThickness" Value="1,1,1,1" />
+            <Setter Property="BorderBrush" Value="#FF1D0F48" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListViewItem}">
+                        <Border BorderBrush="{DynamicResource GridBrush}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5,5,5,5" Margin="-2,0,0,0"  >
+                            <StackPanel>
+                                <GridViewRowPresenter />
+                            </StackPanel>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="Yellow"></Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="LstVwItmStyle1" TargetType="{x:Type ListViewItem}" BasedOn="{StaticResource ListViewItemStyleBase}">
+            <Setter Property="Background" Value="#FFEBEBEB" />
+        </Style>
+
+        <Style x:Key="LstVwItmStyle2" TargetType="{x:Type ListViewItem}" BasedOn="{StaticResource ListViewItemStyleBase}">
+            <Setter Property="Background" Value="#FFC9D5E1" />
+        </Style>
+
+        <local:ListViewItemStyleSelector x:Key="ListViewItemStyleSelector" />
+
+        <!-- TBUC -->
+
+        <Style x:Key="headerStyle1" TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+                        <Border  BorderThickness="2,2,0,2" CornerRadius="5,0,0,5" TextBlock.TextAlignment="Center" Width="{TemplateBinding  Width}" BorderBrush="#FF1D0F48" Background="#FFE2EFC3"  >
+                            <ContentPresenter Content="{TemplateBinding Content}"  ></ContentPresenter>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="headerStyle2" TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+                        <Border  BorderThickness="0,2,0,2" CornerRadius="0,0,0,0" TextBlock.TextAlignment="Center" Width="{TemplateBinding  Width}" BorderBrush="#FF1D0F48" Background="#FFE2EFC3"  >
+                            <ContentPresenter Content="{TemplateBinding Content}"  ></ContentPresenter>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="headerStyle3" TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+                        <Border  BorderThickness="0,2,2,2" CornerRadius="0,5,5,0" TextBlock.TextAlignment="Center" Width="{TemplateBinding  Width}" BorderBrush="#FF1D0F48" Background="#FFE2EFC3"  >
+                            <ContentPresenter Content="{TemplateBinding Content}"  ></ContentPresenter>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <LinearGradientBrush x:Key="LeftPanelGradientBrush" EndPoint="0.208,1.062" StartPoint="0.792,-0.062">
+            <GradientStop Color="#FF0F152B" Offset="0"/>
+            <GradientStop Color="#FF413A70" Offset="1"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="DragNDropGradientBrush" EndPoint="0.012,0.986" StartPoint="0.988,0.014">
+            <GradientStop Color="#FF195078" Offset="0"/>
+            <GradientStop Color="#FF2F5D96" Offset="1"/>
+        </LinearGradientBrush>
+    </UserControl.Resources>
+
+
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource OnLoadedTransition}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+
+
+    <Grid Name="MyGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="47"></RowDefinition>
+            <RowDefinition Height="47"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Name="txtBlockMenuName" Text="Customer Search" Margin="0,0,0,5" Foreground="#FFFFFFFF" FontSize="17" TextAlignment="Center" Background="{StaticResource BottomPanelBrush}"></TextBlock>
+        <ListView Grid.Row ="1" Grid.Column="0" Grid.ColumnSpan="4" Background ="{DynamicResource GridBrush}"    x:Name="CustomerSerchListView"   ItemsSource ="{Binding}"  FontSize="14" ItemContainerStyleSelector="{StaticResource ListViewItemStyleSelector}" IsSynchronizedWithCurrentItem="True" >
+            <ListView.View>
+                <GridView AllowsColumnReorder="True" ColumnHeaderToolTip="Customer">
+
+                    <GridViewColumn Header="tax id" Width="102"  HeaderContainerStyle="{StaticResource headerStyle1}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="{DynamicResource GridBrush}" BorderThickness="0,0,2,0" Margin="0,0,0,0">
+                                    <TextBlock Margin="1,0,0,0" Name="txtBoxTaxID"  Text="{Binding Path=tax_id }" />
+                                 </Border>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Customer Search Key" Width="200"  HeaderContainerStyle="{StaticResource headerStyle1}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="{DynamicResource GridBrush}" BorderThickness="0,0,2,0" Margin="0,0,0,0">
+                                    <TextBlock Margin="1,0,0,0" Name ="txtCustomerSearchKey" Text="{Binding Path=customer_search_key, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True }" />
+                                 </Border>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Customer first name" Width="200"  HeaderContainerStyle="{StaticResource headerStyle1}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="{DynamicResource GridBrush}" BorderThickness="0,0,2,0" Margin="0,0,0,0">
+                                    <TextBlock Margin="1,0,0,0" Name ="txtBoxCustomerFirstName" Text="{Binding Path=customer_first_name, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True }" />
+                                 </Border>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Customer last name" Width="200"  HeaderContainerStyle="{StaticResource headerStyle1}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="{DynamicResource GridBrush}" BorderThickness="0,0,2,0" Margin="0,0,0,0">
+                                    <TextBlock Margin="1,0,0,0" Name ="txtBoxCustomerLastName" Text="{Binding Path=customer_last_name, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True }" />
+                                 </Border>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Address1" Width="200"  HeaderContainerStyle="{StaticResource headerStyle1}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="{DynamicResource GridBrush}" BorderThickness="0,0,2,0" Margin="0,0,0,0">
+                                    <TextBlock Margin="1,0,0,0" Name ="txtBoxAddress1" Text="{Binding Path=address1, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True }" />
+                                 </Border>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Address2" Width="200"  HeaderContainerStyle="{StaticResource headerStyle1}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="{DynamicResource GridBrush}" BorderThickness="0,0,2,0" Margin="0,0,0,0">
+                                    <TextBlock Margin="1,0,0,0" Name ="txtBoxAddress2" Text="{Binding Path=address2, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True }" />
+                                 </Border>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Postal code" Width="200"  HeaderContainerStyle="{StaticResource headerStyle1}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="{DynamicResource GridBrush}" BorderThickness="0,0,2,0" Margin="0,0,0,0">
+                                    <TextBlock Margin="1,0,0,0" Name ="txtBoxPostalCode" Text="{Binding Path=postal_code, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True }" />
+                                 </Border>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="City" Width="200"  HeaderContainerStyle="{StaticResource headerStyle1}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="{DynamicResource GridBrush}" BorderThickness="0,0,2,0" Margin="0,0,0,0">
+                                    <TextBlock Margin="1,0,0,0" Name ="txtBoxCity" Text="{Binding Path=city, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True }" />
+                                 </Border>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn >
+
+                    <GridViewColumn Header="Region" Width="200"  HeaderContainerStyle="{StaticResource headerStyle1}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="{DynamicResource GridBrush}" BorderThickness="0,0,2,0" Margin="0,0,0,0">
+                                    <TextBlock Margin="1,0,0,0" Name ="txtBoxRegion" Text="{Binding Path=region, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True }" />
+                                 </Border>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn >
+
+                    <GridViewColumn Header="Country" Width="200"  HeaderContainerStyle="{StaticResource headerStyle1}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="{DynamicResource GridBrush}" BorderThickness="0,0,2,0" Margin="0,0,0,0">
+                                    <TextBlock Margin="1,0,0,0" Name ="txtBoxCountry" Text="{Binding Path=country, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True }" />
+                                 </Border>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Phone" Width="200"  HeaderContainerStyle="{StaticResource headerStyle1}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="{DynamicResource GridBrush}" BorderThickness="0,0,2,0" Margin="0,0,0,0">
+                                    <TextBlock Margin="1,0,0,0" Name ="txtBoxPhone" Text="{Binding Path=phone, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True }" />
+                                 </Border>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn >
+                    
+                    <GridViewColumn Header="Alt Phone" Width="200"  HeaderContainerStyle="{StaticResource headerStyle1}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="{DynamicResource GridBrush}" BorderThickness="0,0,2,0" Margin="0,0,0,0">
+                                    <TextBlock Margin="1,0,0,0" Name ="txtBoxAltPhone" Text="{Binding Path=alt_phone, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True }" />
+                                 </Border>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn >
+                    
+                    <GridViewColumn Header="Fax" Width="200"  HeaderContainerStyle="{StaticResource headerStyle1}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="{DynamicResource GridBrush}" BorderThickness="0,0,2,0" Margin="0,0,0,0">
+                                    <TextBlock Margin="1,0,0,0" Name ="txtBoxFax" Text="{Binding Path=fax, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True }" />
+                                 </Border>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn >
+                    
+                    <GridViewColumn Header="E-Mail" Width="200"  HeaderContainerStyle="{StaticResource headerStyle1}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="{DynamicResource GridBrush}" BorderThickness="0,0,2,0" Margin="0,0,0,0">
+                                    <TextBlock Margin="1,0,0,0" Name ="txtEMail" Text="{Binding Path=e_mail, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True }" />
+                                 </Border>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn >
+                    
+                    <GridViewColumn Header="Card" Width="200"  HeaderContainerStyle="{StaticResource headerStyle1}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="{DynamicResource GridBrush}" BorderThickness="0,0,2,0" Margin="0,0,0,0">
+                                    <TextBlock Margin="1,0,0,0" Name ="txtBoxCard" Text="{Binding Path=card, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True }" />
+                                 </Border>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn >
+                    
+                    <GridViewColumn Header="Notes" Width="200"  HeaderContainerStyle="{StaticResource headerStyle1}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="{DynamicResource GridBrush}" BorderThickness="0,0,2,0" Margin="0,0,0,0">
+                                    <TextBlock Margin="1,0,0,0" Name ="txtBoxNotes" Text="{Binding Path=notes, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True }" />
+                                 </Border>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn >
+                    
+                    <GridViewColumn Header="Max debt" Width="200"  HeaderContainerStyle="{StaticResource headerStyle1}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="{DynamicResource GridBrush}" BorderThickness="0,0,2,0" Margin="0,0,0,0">
+                                    <TextBlock Margin="1,0,0,0" Name ="txtBoxMaxDebt" Text="{Binding Path=max_debt, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True }" />
+                                 </Border>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn >
+                    
+                    <GridViewColumn Header="Current Debt" Width="200"  HeaderContainerStyle="{StaticResource headerStyle1}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="{DynamicResource GridBrush}" BorderThickness="0,0,2,0" Margin="0,0,0,0">
+                                    <TextBlock Margin="1,0,0,0" Name ="txtBoxCurrDebt" Text="{Binding Path=current_debt, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True }" />
+                                 </Border>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn >
+                    
+                    <GridViewColumn Header="Creation date" Width="200"  HeaderContainerStyle="{StaticResource headerStyle1}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="{DynamicResource GridBrush}" BorderThickness="0,0,2,0" Margin="0,0,0,0">
+                                    <TextBlock Margin="1,0,0,0" Name ="txtBoxCreationDate" Text="{Binding Path=creation_date, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True }" />
+                                 </Border>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn >
+
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+
+</UserControl>
